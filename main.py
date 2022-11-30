@@ -1,8 +1,9 @@
-import tkinter
+import tkinter as tk
 import tkinter.messagebox
 import customtkinter
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from PIL import Image, ImageTk
 import os
@@ -69,6 +70,24 @@ class App(customtkinter.CTk):
         #canvas = FigureCanvasTkAgg(plt.plot(np.linspace(0,100,10),np.linspace(0,100,10)), self.graph_frame)
        # canvas.get_tk_widget().place(x=0, y=0, width=100, height=100)
   #  plt.figure.
+        data1 = {'country': ['A', 'B', 'C', 'D', 'E'],
+                 'gdp_per_capita': [45000, 42000, 52000, 49000, 47000]
+                 }
+        df1 = pd.DataFrame(data1)
+        root = self.app
+
+        figure1 = plt.Figure(figsize=(5, 5), dpi=100)
+        ax1 = figure1.add_subplot(222)
+        bar1 = FigureCanvasTkAgg(figure1, root)
+        bar1.get_tk_widget().pack()
+        df1.plot(kind='bar', legend=True, ax=ax1)
+        canvas = customtkinter.CTkCanvas(root, width=200, height=200, bg='white')
+        #canvas.
+        canvas.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)
+        ax1.set_title('Country Vs. GDP Per Capita')
+        root.mainloop()
+
+
 
     def button_event(self):
         print("Login pressed - username:", self.entry_1.get(), "password:", self.entry_2.get())

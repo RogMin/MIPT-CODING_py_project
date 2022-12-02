@@ -1,104 +1,149 @@
-import tkinter as tk
-import tkinter.messagebox
-import customtkinter
-import numpy as np
+from PyQt5 import QtCore, QtGui, QtWidgets
+import matplotlib
 import matplotlib.pyplot as plt
+
+matplotlib.use('Qt5Agg')
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import QFileDialog
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from PIL import Image, ImageTk
-import os
 import pandas as pd
 
-customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
-PATH = os.path.dirname(os.path.realpath(__file__))
-
-
-class App(customtkinter.CTk):
-
-    APP_NAME = "Easy plot"
-    WIDTH = 900
-    HEIGHT = 600
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.title(App.APP_NAME)
-        self.geometry(f"{App.WIDTH}x{App.HEIGHT}")
-        self.minsize(App.WIDTH, App.HEIGHT)
-        self.maxsize(App.WIDTH, App.HEIGHT)
-        self.resizable(False, False)
-
-        self.protocol("WM_DELETE_WINDOW", self.on_closing)
-
-        # load image with PIL and convert to PhotoImage
-        #image = Image.open(PATH + "/test_images/bg_gradient.jpg").resize((self.WIDTH, self.HEIGHT))
-        #self.bg_image = ImageTk.PhotoImage(image)
-
-        #self.image_label = tkinter.Label(master=self, image=self.bg_image)
-       # self.image_label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-        self.app = customtkinter.CTk()
-
-        self.frame = customtkinter.CTkFrame(master=self,
-                                            width=300,
-                                            height=App.HEIGHT,
-                                            corner_radius=0)
-        self.frame.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-
-        self.graph_frame = customtkinter.CTkFrame(master=self,
-                                            width=100,
-                                            height=100,
-                                            corner_radius=0)
-        self.graph_frame.place(relx=0, rely=0, anchor=tkinter.CENTER)
-
-        self.label_1 = customtkinter.CTkLabel(master=self.frame, width=200, height=60,
-                                              fg_color=("gray70", "gray25"), text="CustomTkinter\ninterface example")
-        self.label_1.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)
-
-        self.entry_1 = customtkinter.CTkEntry(master=self.frame, corner_radius=6, width=200, placeholder_text="username")
-        self.entry_1.place(relx=0.5, rely=0.52, anchor=tkinter.CENTER)
-
-        self.entry_2 = customtkinter.CTkEntry(master=self.frame, corner_radius=6, width=200, show="*", placeholder_text="password")
-        self.entry_2.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
-
-        self.button_2 = customtkinter.CTkButton(master=self.frame, text="Login",
-                                                corner_radius=6, command=self.button_event, width=200)
-        self.button_2.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)
+class MatplotlibCanvas(FigureCanvasQTAgg):
+    def __init__(self, parent=None, dpi=120):
+        fig = Figure(dpi=dpi)
+        self.axes = fig.add_subplot(111)
+        super(MatplotlibCanvas, self).__init__(fig)
 
 
-        #canvas = FigureCanvasTkAgg(plt.plot(np.linspace(0,100,10),np.linspace(0,100,10)), self.graph_frame)
-       # canvas.get_tk_widget().place(x=0, y=0, width=100, height=100)
-  #  plt.figure.
-        data1 = {'country': ['A', 'B', 'C', 'D', 'E'],
-                 'gdp_per_capita': [45000, 42000, 52000, 49000, 47000]
-                 }
-        df1 = pd.DataFrame(data1)
-        root = self.app
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(1200, 833)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setObjectName("label")
+        self.horizontalLayout.addWidget(self.label)
+        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox.setObjectName("comboBox")
+        self.horizontalLayout.addWidget(self.comboBox)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout.addWidget(self.pushButton)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(self.spacerItem1)
+        self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
 
-        figure1 = plt.Figure(figsize=(5, 5), dpi=100)
-        ax1 = figure1.add_subplot(222)
-        bar1 = FigureCanvasTkAgg(figure1, root)
-        bar1.get_tk_widget().pack()
-        df1.plot(kind='bar', legend=True, ax=ax1)
-        canvas = customtkinter.CTkCanvas(root, width=200, height=200, bg='white')
-        #canvas.
-        canvas.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)
-        ax1.set_title('Country Vs. GDP Per Capita')
-        root.mainloop()
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.actionOpen_csv_file = QtWidgets.QAction(MainWindow)
+        self.actionOpen_csv_file.setObjectName("actionOpen_csv_file")
+        self.actionExit = QtWidgets.QAction(MainWindow)
+        self.actionExit.setObjectName("actionExit")
+        self.menuFile.addAction(self.actionOpen_csv_file)
+        self.menuFile.addAction(self.actionExit)
+        self.menubar.addAction(self.menuFile.menuAction())
 
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.filename = ''
+        self.canv = MatplotlibCanvas(self)
+        self.df = []
 
-    def button_event(self):
-        print("Login pressed - username:", self.entry_1.get(), "password:", self.entry_2.get())
+        self.toolbar = Navi(self.canv, self.centralwidget)
+        self.horizontalLayout.addWidget(self.toolbar)
 
-    def on_closing(self, event=0):
-        self.destroy()
+        self.themes = ['bmh', 'classic', 'dark_background', 'fast',
+                       'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
+                       'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
+                       'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
+                       'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
+                       'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
+                       'Solarize_Light2', 'tableau-colorblind10']
 
-    def start(self):
-        self.mainloop()
+        self.comboBox.addItems(self.themes)
+
+        self.pushButton.clicked.connect(self.getFile)
+        self.comboBox.currentIndexChanged['QString'].connect(self.Update)
+        self.actionExit.triggered.connect(MainWindow.close)
+        self.actionOpen_csv_file.triggered.connect(self.getFile)
+
+    def Update(self, value):
+        plt.clf()
+        plt.style.use(value)
+        self.horizontalLayout.removeWidget(self.toolbar)
+        self.verticalLayout.removeWidget(self.canv)
+        self.toolbar = None
+        self.canv = None
+        self.verticalLayout.removeItem(self.spacerItem1)
+        self.canv = MatplotlibCanvas(self)
+        self.toolbar = Navi(self.canv, self.centralwidget)
+
+        self.horizontalLayout.addWidget(self.toolbar)
+        self.verticalLayout.addWidget(self.canv)
+
+        self.canv.axes.cla()
+        ax = self.canv.axes
+        self.df.plot(ax=self.canv.axes)
+        legend = ax.legend()
+        legend.set_draggable(True)
+
+        ax.set_xlabel('X axis')
+        ax.set_ylabel('Y axis')
+        ax.set_title(self.Title)
+
+        self.canv.draw()
+
+    def getFile(self):
+        self.filename = QFileDialog.getOpenFileName(filter="csv (*.csv)")[0]
+        print("File :", self.filename)
+        self.readData()
+
+    def readData(self):
+        import os
+        base_name = os.path.basename(self.filename)
+        self.Title = os.path.splitext(base_name)[0]
+        print('FILE', self.Title)
+        self.df = pd.read_csv(self.filename, encoding='utf-8').fillna(0)
+        self.Update(self.themes[0])
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Easy plot"))
+        self.label.setText(_translate("MainWindow", "Select Theme"))
+        self.pushButton.setText(_translate("MainWindow", "Open"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.actionOpen_csv_file.setText(_translate("MainWindow", "Open csv file"))
+        self.actionExit.setText(_translate("MainWindow", "Exit"))
 
 
 if __name__ == "__main__":
-    app = App()
-    app.start()
+    import sys
+
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+
+    MainWindow.show()
+    sys.exit(app.exec_())

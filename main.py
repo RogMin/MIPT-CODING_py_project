@@ -11,6 +11,8 @@ import pandas as pd
 import data
 
 plt.use('Qt5Agg')
+
+
 class MatplotlibCanvas(FigureCanvasQTAgg):
     def __init__(self, parent=None, dpi=120):
         fig = Figure(dpi=dpi)
@@ -28,6 +30,30 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.openCSVButton.clicked.connect(self.get_file)
         self.stylesDropdown.addItems(self.themes)
         self.stylesDropdown.currentIndexChanged['QString'].connect(self.Update)
+
+        self.x_to_y_button.clicked.connect(self.x_to_y)
+        self.y1_to_y2_button.clicked.connect(self.y1_to_y2)
+        self.x1_to_y2_button.clicked.connect(self.x1_to_y2)
+
+    # self.x1_line_edit.editingFinished['QString'].connect(self.inputTest())
+    # self.x2_line_edit.editingFinished['QString'].connect()
+    # self.y1_line_edit.editingFinished['QString'].connect()
+    # self.y2_line_edit.editingFinished['QString'].connect()
+
+    def x_to_y(self):
+        print("x y")
+        pass
+
+    def y1_to_y2(self):
+        print("y1 y2")
+        pass
+
+    def x1_to_y2(self):
+        print("x1 y2")
+        pass
+
+    def inputTest(self):
+        print(self.x1_line_edit.text())
 
     def clear_frames(self):
         print("s")
@@ -96,5 +122,3 @@ if __name__ == "__main__":
     window = MainWindow()
     window.show()
     app.exec()
-
-

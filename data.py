@@ -1,4 +1,6 @@
 import numpy as np
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi
+from matplotlib.figure import Figure
 
 
 class Graph:
@@ -13,8 +15,12 @@ class Graph:
         self.x = x
         self.y = y
 
-   def draw():
-       pass
+
+class MatplotlibCanvas(FigureCanvasQTAgg):
+    def __init__(self, parent=None, dpi=120):
+        fig = Figure(dpi=dpi)
+        self.axes = fig.add_subplot(111)
+        super(MatplotlibCanvas, self).__init__(fig)
 
 
 class Color:

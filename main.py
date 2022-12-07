@@ -4,6 +4,7 @@ from ui.design import Ui_MainWindow
 import matplotlib as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi
 from matplotlib.figure import Figure
+from matplotlib import style
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
@@ -20,13 +21,14 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
-        self.themes = ['bmh', 'classic', 'dark_background', 'fast',
-                       'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
-                       'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
-                       'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
-                       'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
-                       'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
-                       'Solarize_Light2', 'tableau-colorblind10']
+        #self.themes = ['bmh', 'classic', 'dark_background', 'fast',
+        #               'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
+        #               'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
+        #               'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
+        #               'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
+        #               'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
+        #               'Solarize_Light2', 'tableau-colorblind10']
+        self.themes = plt.style.available
         self.frames = []
         self.df = None
         self.setupUi(self)
@@ -79,24 +81,26 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def Update(self, value):
         """clears old, draws new"""
         self.clear_frames()
-        self.verticalLayout.layout().maximumSize = 1000
-        self.verticalLayout.layout().minimumSize = 1000
-        self.verticalLayout.minimumSize = 100000000
-        self.verticalLayout.maximumSize = 1000
         print(self.verticalLayout.maximumSize)
         self.create_frame()
         print("0")
         # plt.clf()
         print(value)
-        # plt.style.use(value)
         print("1")
+        plt.style.use('dark_background')
         for frame in self.frames:
             print("2")
             frame.canvas = MatplotlibCanvas(self)
             canv = frame.canvas
+            w = canv.get_width_height()
+            a = QtWidgets.QLabel(self)
+            a.setStyleSheet("QLabel{background_color: rgb(0, 0, 0, 0)}")
+            a_l = QtWidgets.QStackedLayout(a)
+            a_l.addWidget(canv)
+            a.setMinimumHeight(w[1])
             print("3")
             # self.verticalLayout.addChildWidget(canv)
-            self.verticalLayout.addWidget(canv)
+            self.verticalLayout.addWidget(a)
             canv.axes.cla()
             ax = canv.axes
             print("4")
@@ -110,6 +114,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             print("6")
             canv.draw()
         print("end")
+
         # self.toolbar = Navi(self.canv, self.centralwidget)
         # self.horizontalLayout.addWidget(self.toolbar)
 

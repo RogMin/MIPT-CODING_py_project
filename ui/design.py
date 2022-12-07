@@ -290,12 +290,6 @@ class Ui_MainWindow(object):
         self.markerSizeLabel = QtWidgets.QLabel(self.centralwidget)
         self.markerSizeLabel.setGeometry(QtCore.QRect(820, 270, 71, 16))
         self.markerSizeLabel.setObjectName("markerSizeLabel")
-        self.x_label_inp = QtWidgets.QLineEdit(self.centralwidget)
-        self.x_label_inp.setGeometry(QtCore.QRect(770, 300, 161, 21))
-        self.x_label_inp.setObjectName("x_label_inp")
-        self.y_label_inp = QtWidgets.QLineEdit(self.centralwidget)
-        self.y_label_inp.setGeometry(QtCore.QRect(770, 330, 161, 21))
-        self.y_label_inp.setObjectName("y_label_inp")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -322,6 +316,4 @@ class Ui_MainWindow(object):
         self.markerTypeLabel.setText(_translate("MainWindow", "Marker type"))
         self.lineColorLabel.setText(_translate("MainWindow", "Line color"))
         self.markerSizeLabel.setText(_translate("MainWindow", "Marker size"))
-        self.x_label_inp.setPlaceholderText(_translate("MainWindow", "x-axis label"))
-        self.y_label_inp.setPlaceholderText(_translate("MainWindow", "y-axis label"))
 import ui.resources_rc

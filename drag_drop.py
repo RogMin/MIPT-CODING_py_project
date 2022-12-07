@@ -15,14 +15,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             e.ignore()
 
     def dragMoveEvent(self, e):
-
         if e.mimeData().hasUrls:
             e.accept()
         else:
             e.ignore()
 
     def dropEvent(self, e):
-
         if e.mimeData().hasUrls:
             e.setDropAction(QtCore.Qt.CopyAction)
             e.accept()

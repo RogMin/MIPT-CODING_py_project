@@ -1,5 +1,9 @@
+import numpy as np
+
+
 class Graph:
-    def __init__(self, marker_size=0, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", x=[[]], y=[[]]):
+    def __init__(self, marker_size=0, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", x=[np.ones(5), 5 * np.ones(5)],
+                 y=[5 * np.ones(5), np.ones(5)]):
         self.marker_size = marker_size
         self.color = color
         self.color2 = color2
@@ -17,10 +21,8 @@ class Color:
 
 
 class Frame:
-    def __init__(self, frame=None, canvas=None,test=None, graph=Graph()):
+    def __init__(self, frame=None, canvas=None, test=None, graph=Graph()):
         self.canvas = canvas
         self.graph = graph
         self.frame = frame
         self.test = test
-
-

@@ -157,6 +157,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def read_data(self, filename):
         """reads the file from the link"""
         self.df = pd.read_csv(filename, encoding='utf-8').fillna(0)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        #self.df = pd.Series([1,2,3,4],[4,3,2,1])
         print("-1")
         self.Update(self.themes[0])
 

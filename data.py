@@ -21,3 +21,4 @@ class Frame:
         self.canvas = canvas
         self.graph = graph
         self.frame = frame
+

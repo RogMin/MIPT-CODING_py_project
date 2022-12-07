@@ -82,9 +82,9 @@ class Ui_MainWindow(object):
                        'Solarize_Light2', 'tableau-colorblind10']
 
         self.comboBox.addItems(self.themes)
-
-        self.pushButton.clicked.connect(self.getFile)
         self.comboBox.currentIndexChanged['QString'].connect(self.Update)
+        self.pushButton.clicked.connect(self.getFile)
+
         self.actionExit.triggered.connect(MainWindow.close)
         self.actionOpen_csv_file.triggered.connect(self.getFile)
 

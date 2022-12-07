@@ -21,54 +21,24 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
-        #self.themes = ['bmh', 'classic', 'dark_background', 'fast',
-        #               'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
-        #               'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
-        #               'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
-        #               'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
-        #               'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
-        #               'Solarize_Light2', 'tableau-colorblind10']
         self.themes = plt.style.available
         self.frames = []
         self.df = None
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_file)
+        self.stylesDropdown.addItems(self.themes)
+        self.stylesDropdown.currentIndexChanged['QString'].connect(self.Update)
 
     def clear_frames(self):
         print("s")
         for frame in self.frames:
             print("l")
-            self.verticalLayout.removeItem(frame)
-            self.frames.remove(frame)
+            self.verticalLayout.removeItem(frame.test)
+            print("ll")
+            self.frames.pop(frame)
+        print("s")
 
     def create_frame(self):
-
-        # frame = QtWidgets.QFrame()
-        # frame.setMinimumHeight(400)
-        # self.verticalLayout.addWidget(frame)
-        # self.frames.append(data.Frame(frame))
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
         self.frames.append(data.Frame())
         self.frames.append(data.Frame())
         self.frames.append(data.Frame())
@@ -81,37 +51,26 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def Update(self, value):
         """clears old, draws new"""
         self.clear_frames()
-        print(self.verticalLayout.maximumSize)
         self.create_frame()
-        print("0")
-        # plt.clf()
-        print(value)
-        print("1")
         plt.style.use('dark_background')
         for frame in self.frames:
-            print("2")
             frame.canvas = MatplotlibCanvas(self)
             canv = frame.canvas
             w = canv.get_width_height()
-            a = QtWidgets.QLabel(self)
-            a.setStyleSheet("QLabel{background_color: rgb(0, 0, 0, 0)}")
+            a = QtWidgets.QFrame(self)
+            a.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
             a_l = QtWidgets.QStackedLayout(a)
             a_l.addWidget(canv)
             a.setMinimumHeight(w[1])
-            print("3")
-            # self.verticalLayout.addChildWidget(canv)
             self.verticalLayout.addWidget(a)
             canv.axes.cla()
             ax = canv.axes
-            print("4")
             self.df.plot(ax=ax)
             legend = ax.legend()
             legend.set_draggable(True)
-            print("5")
             fr = data.Frame()
             ax.set_xlabel(fr.graph.x_lbl)
             ax.set_ylabel(fr.graph.y_lbl)
-            print("6")
             canv.draw()
         print("end")
 

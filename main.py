@@ -1,4 +1,5 @@
 import sys
+
 from ui.design import Ui_MainWindow
 import matplotlib as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi
@@ -8,9 +9,6 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
 import data
-import config
-
-
 
 plt.use('Qt5Agg')
 
@@ -36,9 +34,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.x_to_y_button.clicked.connect(self.x_to_y)
         self.y1_to_y2_button.clicked.connect(self.y1_to_y2)
         self.x1_to_y2_button.clicked.connect(self.x1_to_y2)
-
-        self.frames.append(data.Frame())
-        self.frames.append(data.Frame())
+        self.x_label_inp.editingFinished.connect(self.set_x_label)
+        self.y_label_inp.editingFinished.connect(self.set_y_label)
 
     # self.x1_line_edit.editingFinished['QString'].connect(self.inputTest())
     # self.x2_line_edit.editingFinished['QString'].connect()
@@ -82,16 +79,41 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # pass
 
     def inputTest(self):
+        for frame in self.frames:
+            frame.graph.x = self.x1_line_edit.text()
+            print(frame.graph.x)
+
+    def set_x_label(self):
+        if len(self.frames) > 0:
+            for frame in self.frames:
+                frame.graph.x_lbl = self.x_label_inp.text()
+            self.Update()
+
+    def set_y_label(self):
+        if len(self.frames) > 0:
+            for frame in self.frames:
+                frame.graph.y_lbl = self.y_label_inp.text()
+            self.Update()
+
+    def x_to_y(self):
+        print("x y")
+        pass
+
+    def y1_to_y2(self):
+        print("y1 y2")
+        pass
+
+    def x1_to_y2(self):
+        print("x1 y2")
+        pass
+
+    def inputTest(self):
         print(self.x1_line_edit.text())
 
     def clear_frames(self):
-        # print("s")
         for frame in self.frames:
-            # print("l")
             self.verticalLayout.removeWidget(frame.test)
-            # print("ll")
         self.frames = []
-        # print("s")
 
     def create_frame(self):
         self.frames.append(data.Frame())
@@ -103,7 +125,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.frames.append(data.Frame())
         self.frames.append(data.Frame())
 
-    def Update(self, value):
+    def Update(self, value = "bmh"):
         """clears old, draws new"""
         self.clear_frames()
         self.create_frame()
@@ -124,9 +146,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.df.plot(ax=ax)
             legend = ax.legend()
             legend.set_draggable(True)
-            fr = data.Frame()
-            ax.set_xlabel(fr.graph.x_lbl)
-            ax.set_ylabel(fr.graph.y_lbl)
+            ax.set_xlabel(frame.graph.x_lbl)
+            ax.set_ylabel(frame.graph.y_lbl)
             canv.draw()
         print("end")
 

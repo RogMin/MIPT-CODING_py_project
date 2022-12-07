@@ -13,6 +13,9 @@ class Graph:
         self.x = x
         self.y = y
 
+   def draw():
+       pass
+
 
 class Color:
     GRAY = "gray"

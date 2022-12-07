@@ -658,30 +658,30 @@ border: 6px solid rgb(113, 40, 0);
      <string>Marker size</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QLineEdit" name="x_label_inp">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>340</y>
-      <width>93</width>
-      <height>28</height>
+      <x>770</x>
+      <y>300</y>
+      <width>161</width>
+      <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="placeholderText">
+     <string>x-axis label</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QLineEdit" name="y_label_inp">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>350</y>
-      <width>93</width>
-      <height>28</height>
+      <x>770</x>
+      <y>330</y>
+      <width>161</width>
+      <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="placeholderText">
+     <string>y-axis label</string>
     </property>
    </widget>
   </widget>

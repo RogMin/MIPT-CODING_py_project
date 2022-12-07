@@ -33,9 +33,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("s")
         for frame in self.frames:
             print("l")
-            self.verticalLayout.removeItem(frame.test)
+            self.verticalLayout.removeWidget(frame.test)
             print("ll")
-            self.frames.pop(frame)
+        self.frames = []
         print("s")
 
     def create_frame(self):
@@ -52,7 +52,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         """clears old, draws new"""
         self.clear_frames()
         self.create_frame()
-        plt.style.use('dark_background')
+        plt.style.use(value)
         for frame in self.frames:
             frame.canvas = MatplotlibCanvas(self)
             canv = frame.canvas
@@ -62,6 +62,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             a_l = QtWidgets.QStackedLayout(a)
             a_l.addWidget(canv)
             a.setMinimumHeight(w[1])
+            frame.test = a
             self.verticalLayout.addWidget(a)
             canv.axes.cla()
             ax = canv.axes

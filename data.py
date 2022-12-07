@@ -17,8 +17,10 @@ class Color:
 
 
 class Frame:
-    def __init__(self, frame=None, canvas=None, graph=Graph()):
+    def __init__(self, frame=None, canvas=None,test=None, graph=Graph()):
         self.canvas = canvas
         self.graph = graph
         self.frame = frame
+        self.test = test
+
 

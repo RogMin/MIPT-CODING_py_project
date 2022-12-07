@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c7106d-fced-4942-a27a-fe515b10c5f6" name="Changes" comment="readme and Approx">
-      <change beforePath="$PROJECT_DIR$/.idea/MIPT-CODING_py_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MIPT-CODING_py_project.iml" afterDir="false" />
+    <list default="true" id="93c7106d-fced-4942-a27a-fe515b10c5f6" name="Changes" comment="x to y and x,y label change">
+      <change afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag_drop.py" beforeDir="false" afterPath="$PROJECT_DIR$/drag_drop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,13 +47,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/volod/PycharmProjects/MIPT-CODING_py_project/main.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/volod/PycharmProjects/MIPT-CODING_py_project/main.py&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="MIPT-CODING_py_project" />
@@ -129,7 +127,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670423216472</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changing buttons">
+      <created>1670431566806</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670431566806</updated>
+    </task>
+    <task id="LOCAL-00004" summary="x to y and x,y label change">
+      <created>1670433742175</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670433742175</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +157,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="readme and Approx" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme and Approx" />
+    <MESSAGE value="changing buttons" />
+    <MESSAGE value="x to y and x,y label change" />
+    <option name="LAST_COMMIT_MESSAGE" value="x to y and x,y label change" />
   </component>
 </project>

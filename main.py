@@ -37,10 +37,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.x_label_inp.editingFinished.connect(self.set_x_label)
         self.y_label_inp.editingFinished.connect(self.set_y_label)
 
-    # self.x1_line_edit.editingFinished['QString'].connect(self.inputTest())
-    # self.x2_line_edit.editingFinished['QString'].connect()
-    # self.y1_line_edit.editingFinished['QString'].connect()
-    # self.y2_line_edit.editingFinished['QString'].connect()
+        self.x1_line_edit.editingFinished.connect(self.inputTest)
+    # self.x2_line_edit.editingFinished.connect()
+    # self.y1_line_edit.editingFinished.connect()
+    # self.y2_line_edit.editingFinished.connect()
 
     def x_to_y(self):
         f = 0
@@ -80,7 +80,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def inputTest(self):
         for frame in self.frames:
-            frame.graph.x = self.x1_line_edit.text()
+            df["x1"] = pd.series(self.x1_line_edit.text())
             print(frame.graph.x)
 
     def set_x_label(self):
@@ -97,15 +97,45 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def x_to_y(self):
         print("x y")
-        pass
+        # pass
+        f = 0
+        for frame in self.frames:
+            if not f:
+                print("x_to_y:", "x", frame.graph.y, "y", frame.graph.y)
+                f = 1
+
+            if frame.graph.y and frame.graph.y:
+                frame.graph.x, frame.graph.y = frame.graph.y, frame.graph.x
+        print("x", frame.graph.x, "y", frame.graph.y)
+        # pass
 
     def y1_to_y2(self):
         print("y1 y2")
-        pass
+        # pass
+        f = 0
+        for frame in self.frames:
+            if not f:
+                print("y1_to_y2", "y1", frame.graph.y[0], "y2", frame.graph.y[1])
+                f = 1
+
+            if frame.graph.y[0] and frame.graph.y[1]:
+                frame.graph.y[0], frame.graph.y[1] = frame.graph.y[1], frame.graph.y[0]
+        print("y1", frame.graph.y[0], "y2", frame.graph.y[1])
+        # pass
 
     def x1_to_y2(self):
         print("x1 y2")
-        pass
+        # pass
+        #
+        f = 0
+        for frame in self.frames:
+            if not f:
+                print("x1_to_y2", "x1", frame.graph.x[0], "y2", frame.graph.y[1])
+                f = 1
+            if frame.graph.x[0] and frame.graph.y[1]:
+                frame.graph.x[0], frame.graph.y[1] = frame.graph.y[1], frame.graph.x[0]
+        print("x1", frame.graph.x[0], "y2", frame.graph.y[1])
+        # pass
 
     def inputTest(self):
         print(self.x1_line_edit.text())

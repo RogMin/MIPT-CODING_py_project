@@ -1,4 +1,4 @@
-from main import Ui_MainWindow
+from old import Ui_MainWindow
 import sys
 from PyQt5 import QtCore, QtWidgets
 

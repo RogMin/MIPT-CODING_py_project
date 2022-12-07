@@ -2,6 +2,7 @@ import data
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import draw
 
 
 class Model:
@@ -12,6 +13,7 @@ class Model:
         self.ylabel = ylabel
         self.df = df
         self.theme = theme
+        self.draw = draw.Draw()
 
     def set_x_y(self, df):
         if not self.df.empty:
@@ -46,7 +48,10 @@ class Model:
             graph.x_lbl = self.xlabel
             graph.y_lbl = self.ylabel
             # (...)
-        pass
+        self.draw.visualise(self.Graphs)
+
+
+
 
 
 class Hist(data.Graph):

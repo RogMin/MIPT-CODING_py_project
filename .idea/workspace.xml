@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c7106d-fced-4942-a27a-fe515b10c5f6" name="Changes" comment="x to y and x,y label change">
-      <change afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+    <list default="true" id="93c7106d-fced-4942-a27a-fe515b10c5f6" name="Changes" comment="model and input differentiation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +101,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.old" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.old" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -141,7 +142,28 @@
       <option name="project" value="LOCAL" />
       <updated>1670433742175</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="model">
+      <created>1670441457521</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670441457521</updated>
+    </task>
+    <task id="LOCAL-00006" summary="model">
+      <created>1670441799940</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670441799940</updated>
+    </task>
+    <task id="LOCAL-00007" summary="model and input differentiation">
+      <created>1670443981738</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670443981739</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +181,8 @@
     <MESSAGE value="readme and Approx" />
     <MESSAGE value="changing buttons" />
     <MESSAGE value="x to y and x,y label change" />
-    <option name="LAST_COMMIT_MESSAGE" value="x to y and x,y label change" />
+    <MESSAGE value="model" />
+    <MESSAGE value="model and input differentiation" />
+    <option name="LAST_COMMIT_MESSAGE" value="model and input differentiation" />
   </component>
 </project>

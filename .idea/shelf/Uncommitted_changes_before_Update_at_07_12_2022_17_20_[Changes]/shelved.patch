@@ -1,0 +1,20 @@
+Index: class.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Approx(self, x, y):\r\n    is_Active = True\r\n\r\n    def mnk(self, x, y, n):\r\n        return np.polyfit(x, y, n)\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/class.py b/class.py
+--- a/class.py	(revision f4fba5f34b4e5125839869ac955382be10d77e97)
++++ b/class.py	(date 1669996346182)
+@@ -1,6 +1,8 @@
++import numpy as np
++
++
+ class Approx(self, x, y):
+     is_Active = True
+ 
+     def mnk(self, x, y, n):
+         return np.polyfit(x, y, n)
+-

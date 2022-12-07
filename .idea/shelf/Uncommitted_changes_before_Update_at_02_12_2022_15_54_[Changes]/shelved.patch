@@ -1,0 +1,46 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter as tk\r\nimport tkinter.messagebox\r\nimport customtkinter\r\nimport numpy as np\r\nimport matplotlib.pyplot as plt\r\nfrom matplotlib.figure import Figure\r\nfrom matplotlib.backends.backend_tkagg import FigureCanvasTkAgg\r\nfrom PIL import Image, ImageTk\r\nimport os\r\nimport pandas as pd\r\n\r\ncustomtkinter.set_appearance_mode(\"Dark\")  # Modes: \"System\" (standard), \"Dark\", \"Light\"\r\ncustomtkinter.set_default_color_theme(\"blue\")  # Themes: \"blue\" (standard), \"green\", \"dark-blue\"\r\n\r\nPATH = os.path.dirname(os.path.realpath(__file__))\r\n\r\n\r\nclass App(customtkinter.CTk):\r\n\r\n    APP_NAME = \"Easy plot\"\r\n    WIDTH = 900\r\n    HEIGHT = 600\r\n\r\n    def __init__(self, *args, **kwargs):\r\n        super().__init__(*args, **kwargs)\r\n\r\n        self.title(App.APP_NAME)\r\n        self.geometry(f\"{App.WIDTH}x{App.HEIGHT}\")\r\n        self.minsize(App.WIDTH, App.HEIGHT)\r\n        self.maxsize(App.WIDTH, App.HEIGHT)\r\n        self.resizable(False, False)\r\n\r\n        self.protocol(\"WM_DELETE_WINDOW\", self.on_closing)\r\n\r\n        # load image with PIL and convert to PhotoImage\r\n        #image = Image.open(PATH + \"/test_images/bg_gradient.jpg\").resize((self.WIDTH, self.HEIGHT))\r\n        #self.bg_image = ImageTk.PhotoImage(image)\r\n\r\n        #self.image_label = tkinter.Label(master=self, image=self.bg_image)\r\n       # self.image_label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)\r\n        self.app = customtkinter.CTk()\r\n\r\n        self.frame = customtkinter.CTkFrame(master=self,\r\n                                            width=300,\r\n                                            height=App.HEIGHT,\r\n                                            corner_radius=0)\r\n        self.frame.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)\r\n\r\n        self.graph_frame = customtkinter.CTkFrame(master=self,\r\n                                            width=100,\r\n                                            height=100,\r\n                                            corner_radius=0)\r\n        self.graph_frame.place(relx=0, rely=0, anchor=tkinter.CENTER)\r\n\r\n        self.label_1 = customtkinter.CTkLabel(master=self.frame, width=200, height=60,\r\n                                              fg_color=(\"gray70\", \"gray25\"), text=\"CustomTkinter\\ninterface example\")\r\n        self.label_1.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)\r\n\r\n        self.entry_1 = customtkinter.CTkEntry(master=self.frame, corner_radius=6, width=200, placeholder_text=\"username\")\r\n        self.entry_1.place(relx=0.5, rely=0.52, anchor=tkinter.CENTER)\r\n\r\n        self.entry_2 = customtkinter.CTkEntry(master=self.frame, corner_radius=6, width=200, show=\"*\", placeholder_text=\"password\")\r\n        self.entry_2.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)\r\n\r\n        self.button_2 = customtkinter.CTkButton(master=self.frame, text=\"Login\",\r\n                                                corner_radius=6, command=self.button_event, width=200)\r\n        self.button_2.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)\r\n\r\n\r\n        #canvas = FigureCanvasTkAgg(plt.plot(np.linspace(0,100,10),np.linspace(0,100,10)), self.graph_frame)\r\n       # canvas.get_tk_widget().place(x=0, y=0, width=100, height=100)\r\n  #  plt.figure.\r\n        data1 = {'country': ['A', 'B', 'C', 'D', 'E'],\r\n                 'gdp_per_capita': [45000, 42000, 52000, 49000, 47000]\r\n                 }\r\n        df1 = pd.DataFrame(data1)\r\n        root = self.app\r\n\r\n        figure1 = plt.Figure(figsize=(5, 5), dpi=100)\r\n        ax1 = figure1.add_subplot(222)\r\n        bar1 = FigureCanvasTkAgg(figure1, root)\r\n        bar1.get_tk_widget().pack()\r\n        df1.plot(kind='bar', legend=True, ax=ax1)\r\n        canvas = customtkinter.CTkCanvas(root, width=200, height=200, bg='white')\r\n        #canvas.\r\n        canvas.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)\r\n        ax1.set_title('Country Vs. GDP Per Capita')\r\n        root.mainloop()\r\n\r\n\r\n\r\n    def button_event(self):\r\n        print(\"Login pressed - username:\", self.entry_1.get(), \"password:\", self.entry_2.get())\r\n\r\n    def on_closing(self, event=0):\r\n        self.destroy()\r\n\r\n    def start(self):\r\n        self.mainloop()\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    app = App()\r\n    app.start()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision 9e67f91a72bd4657e72d6f962ce4385b37632338)
++++ b/main.py	(date 1669984748434)
+@@ -21,6 +21,7 @@
+     WIDTH = 900
+     HEIGHT = 600
+ 
++
+     def __init__(self, *args, **kwargs):
+         super().__init__(*args, **kwargs)
+ 
+@@ -37,7 +38,7 @@
+         #self.bg_image = ImageTk.PhotoImage(image)
+ 
+         #self.image_label = tkinter.Label(master=self, image=self.bg_image)
+-       # self.image_label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
++        #self.image_label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+         self.app = customtkinter.CTk()
+ 
+         self.frame = customtkinter.CTkFrame(master=self,
+@@ -68,8 +69,8 @@
+ 
+ 
+         #canvas = FigureCanvasTkAgg(plt.plot(np.linspace(0,100,10),np.linspace(0,100,10)), self.graph_frame)
+-       # canvas.get_tk_widget().place(x=0, y=0, width=100, height=100)
+-  #  plt.figure.
++        #canvas.get_tk_widget().place(x=0, y=0, width=100, height=100)
++        #plt.figure.
+         data1 = {'country': ['A', 'B', 'C', 'D', 'E'],
+                  'gdp_per_capita': [45000, 42000, 52000, 49000, 47000]
+                  }
+@@ -88,7 +89,6 @@
+         root.mainloop()
+ 
+ 
+-
+     def button_event(self):
+         print("Login pressed - username:", self.entry_1.get(), "password:", self.entry_2.get())
+ 

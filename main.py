@@ -9,7 +9,7 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
 import data
-import Input
+import model
 
 plt.use('Qt5Agg')
 
@@ -28,20 +28,28 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.frames = []
         self.df = None
         self.setupUi(self)
-        self.openCSVButton.clicked.connect(self.get_file)
+        self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
         self.stylesDropdown.currentIndexChanged['QString'].connect(self.Update)
+        self.modl = model.Model()
+        self.x_to_y_button.clicked.connect(self.modl.x_to_y)
+        self.y1_to_y2_button.clicked.connect(self.modl.y1_to_y2)
+        self.x1_to_y2_button.clicked.connect(self.modl.x1_to_y2)
+        self.x_label_inp.editingFinished.connect(self.set_x_label)
+        self.y_label_inp.editingFinished.connect(self.set_y_label)
+        self.x1_line_edit.editingFinished.connect(self.get_x_y_arrays)
+        self.x2_line_edit.editingFinished.connect()
 
-        self.x_to_y_button.clicked.connect(Input.x_to_y)
-        self.y1_to_y2_button.clicked.connect(Input.y1_to_y2)
-        self.x1_to_y2_button.clicked.connect(Input.x1_to_y2)
-        self.x_label_inp.editingFinished.connect(Input.set_x_label)
-        self.y_label_inp.editingFinished.connect(Input.set_y_label)
 
-    # self.x1_line_edit.editingFinished['QString'].connect(self.inputTest())
-    # self.x2_line_edit.editingFinished['QString'].connect()
+    #
     # self.y1_line_edit.editingFinished['QString'].connect()
     # self.y2_line_edit.editingFinished['QString'].connect()
+
+    def set_x_label(self):
+        self.modl.set_x_label(self.x_label_inp.text())
+
+    def set_y_label(self):
+        self.modl.set_y_label(self.y_label_inp.text())
 
     def inputTest(self):
         for frame in self.frames:
@@ -92,18 +100,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # self.toolbar = Navi(self.canv, self.centralwidget)
         # self.horizontalLayout.addWidget(self.toolbar)
 
-    def read_data(self, filename):
-        """reads the file from the link"""
-        self.df = pd.read_csv(filename, encoding='utf-8').fillna(0)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        #self.df = pd.Series([1,2,3,4],[4,3,2,1])
-        print("-1")
-        self.Update(self.themes[0])
+    def get_x_y_arrays(self):
 
-    def get_file(self):
-        """sends a link to the file"""
-        print("ЫА1")
-        self.read_data(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0])
-        print("ЫА2")
+    def get_csv_file(self):
+        """sends df to model"""
+        self.modl.csv_to_pd(pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
+
+
+        # self.modl.set_x_y()
+        # self.df = pd.Series([1,2,3,4],[4,3,2,1])
+        #self.Update(self.themes[0])
 
 
 if __name__ == "__main__":

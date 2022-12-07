@@ -22,3 +22,6 @@ class Line(data.Graph):
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
         plt.plot(self.x, self.y, c=self.color)
+=======
+
+>>>>>>> origin/main

@@ -21,9 +21,3 @@ class Color:
     BLUE = "blue"
     RED = "red"
 
-
-class Frame:
-    def __init__(self, frame=None, canvas=None, test=None, graph=Graph()):
-        self.graph = graph
-        self.frame = frame
-        self.test = test

@@ -5,7 +5,7 @@ import pandas as pd
 
 
 class Model:
-    def __init__(self, color=0, xlabel="", ylabel="", df=pd.series(),theme = "",Graphs =[]):
+    def __init__(self, color=0, xlabel="", ylabel="", df=pd.series(), theme="", Graphs=[]):
         self.Graphs = Graphs
         self.color = color
         self.xlabel = xlabel
@@ -13,50 +13,41 @@ class Model:
         self.df = df
         self.theme = theme
 
-    def set_x_y(self,df):
+    def set_x_y(self, df):
         if not self.df.empty:
             self.df = df
 
-
-    def csv_to_pd(self,df):
+    def csv_to_pd(self, df):
         self.df = df
 
-    def set_theme(self,theme):
-        theme = self.theme
-
+    def set_theme(self, theme):
+        self.theme = theme
 
     def x_to_y(self):
-        for frame in self.frames:
-            if frame.graph.y and frame.graph.y:
-                frame.graph.x, frame.graph.y = frame.graph.y, frame.graph.x
-        print("x", frame.graph.x, "y", frame.graph.y)
+        pass
 
     def y1_to_y2(self):
-        for frame in self.frames:
-            if frame.graph.y[0] and frame.graph.y[1]:
-                frame.graph.y[0], frame.graph.y[1] = frame.graph.y[1], frame.graph.y[0]
-        print("y1", frame.graph.y[0], "y2", frame.graph.y[1])
+        pass
 
     def x1_to_y2(self):
-        for frame in self.frames:
-            if frame.graph.x[0] and frame.graph.y[1]:
-                frame.graph.x[0], frame.graph.y[1] = frame.graph.y[1], frame.graph.x[0]
-        print("x1", frame.graph.x[0], "y2", frame.graph.y[1])
+        pass
 
     def set_x_label(self, label):
-        if len(self.frames) > 0:
-            for frame in self.frames:
-                frame.graph.x_lbl = label
-            self.Update()
+        self.xlabel = label
 
     def set_y_label(self, label):
-        if len(self.frames) > 0:
-            for frame in self.frames:
-                frame.graph.y_lbl = self.y_label_inp.text()
-            self.Update()
+        self.ylabel = label
+
+    def init_graphs(self):
+        pass
 
     def update_graphs_data(self):
+        for graph in self.Graphs:
+            graph.x_lbl = self.xlabel
+            graph.y_lbl = self.ylabel
+            # (...)
         pass
+
 
 class Hist(data.Graph):
     def draw(self):

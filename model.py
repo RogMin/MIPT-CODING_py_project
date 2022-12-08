@@ -1,4 +1,3 @@
-import data
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -53,16 +52,31 @@ class Model:
 
 
 
+class Graph:
+    def __init__(self, marker_size=0, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", x=[np.ones(5), 5 * np.ones(5)],
+                 y=[5 * np.ones(5), np.ones(5)]):
+        self.marker_size = marker_size
+        self.color = color
+        self.color2 = color2
+        self.fig_type = fig_type
+        self.x_lbl = x_lbl
+        self.y_lbl = y_lbl
+        self.x = x
+        self.y = y
+
+   def draw():
+       pass
 
 
-class Hist(data.Graph):
+
+class Hist(Graph):
     def draw(self):
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
         plt.bar(self.x, self.y, c=self.color)
 
 
-class Line(data.Graph):
+class Line(Graph):
     def draw(self):
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)

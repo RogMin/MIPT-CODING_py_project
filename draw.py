@@ -8,7 +8,6 @@ from matplotlib import style
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
-import data
 import draw
 import model
 import numpy as np

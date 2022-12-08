@@ -8,7 +8,6 @@ from matplotlib import style
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
-import data
 import model
 
 plt.use('Qt5Agg')
@@ -24,6 +23,11 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
+        self.setWindowTitle("Easy Plot")
+        width = 941
+        height = 552
+        self.setFixedSize(width, height)
+
         self.themes = plt.style.available
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)

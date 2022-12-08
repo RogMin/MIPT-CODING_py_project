@@ -43,11 +43,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.x2_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y1_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y2_line_edit.editingFinished.connect(self.get_x_y_arrays)
+        self.markerSizeSlider.sliderMoved.connect(self.set_marker_size)
         self.modl.vertical_lay = self.verticalLayout
 
+    def set_marker_size(self):
+        self.modl.set_marker_size(self.markerSizeSlider.sliderPosition())
+        print("set marker size")
+
     def set_theme(self):
-        model.Model.set_theme(self.stylesDropdown.currentIndex())
-        print("theme setted")
+        self.modl.set_theme(self.stylesDropdown.currentIndex())
+        print("themem setted")
 
     def set_x_label(self):
         self.modl.set_x_label(self.x_label_inp.text())
@@ -58,7 +63,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("y_label setted")
 
     def get_x_y_arrays(self):
-        df = pd.Series(self.x1_line_edit.text(), self.x1_line_edit.text(), self.y1_line_edit.text(),self.y2_line_edit.text())
+        df = pd.Series(self.x1_line_edit.text(), self.x1_line_edit.text(), self.y1_line_edit.text(),
+                       self.y2_line_edit.text())
         self.modl.set_x_y(df)
         print("x_y_arrays got")
 
@@ -67,6 +73,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
         print("csv got")
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

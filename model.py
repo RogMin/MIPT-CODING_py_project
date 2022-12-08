@@ -5,15 +5,21 @@ import draw
 
 
 class Model:
-    def __init__(self, color=0, xlabel="", ylabel="", df=pd.Series(), theme="", Graphs=[], vertical_lay=None):
+    def __init__(self, color=0, xlabel="", ylabel="", df=pd.Series(), theme="bmh", Graphs=[], vertical_lay=None,markersize=5):
         self.Graphs = Graphs
         self.color = color
         self.xlabel = xlabel
         self.ylabel = ylabel
         self.df = df
         self.theme = theme
+        self.marker_sz = markersize
         self.draw = draw.Draw()
         self.vertical_lay = vertical_lay
+        self.init_graphs()
+
+    def set_marker_size(self, markersize):
+        print("setting marker size")
+        self.marker_sz = markersize
 
     def set_x_y(self, df):
         print("seting_x_y")
@@ -59,6 +65,8 @@ class Model:
         self.update_graphs_data()
 
     def init_graphs(self):
+        self.Graphs.append(Graph())
+        self.Graphs.append(Graph())
         pass
 
     def update_graphs_data(self):
@@ -66,12 +74,14 @@ class Model:
         for graph in self.Graphs:
             graph.x_lbl = self.xlabel
             graph.y_lbl = self.ylabel
-            # (...)
+            graph.df = self.df
+            graph.marker_size = self.marker_sz
+            graph.theme = self.theme
         self.draw.visualise(self.Graphs)
 
 
 class Graph:
-    def __init__(self, marker_size=0, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", df=None, canvas=None):
+    def __init__(self, marker_size=5, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", df=None, canvas=None,theme = "bmh"):
         self.marker_size = marker_size
         self.color = color
         self.color2 = color2
@@ -80,6 +90,7 @@ class Graph:
         self.y_lbl = y_lbl
         self.canvas = canvas
         self.df = df
+        self.theme = theme
 
     def draw(self):
         x, y = None

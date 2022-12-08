@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c7106d-fced-4942-a27a-fe515b10c5f6" name="Changes" comment="model and input differentiation">
+    <list default="true" id="93c7106d-fced-4942-a27a-fe515b10c5f6" name="Changes" comment="readme and Approx">
+      <change beforePath="$PROJECT_DIR$/.idea/MIPT-CODING_py_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MIPT-CODING_py_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag_drop.py" beforeDir="false" afterPath="$PROJECT_DIR$/drag_drop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\volod\PycharmProjects\MIPT-CODING_py_project\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.10 (MIPT-CODING_py_project)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -86,7 +86,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\volod\AppData\Local\JetBrains\PyCharmCE2022.2\demo\PyCharmLearningProject\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.10 (PyCharmLearningProject)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -128,42 +127,7 @@
       <option name="project" value="LOCAL" />
       <updated>1670423216472</updated>
     </task>
-    <task id="LOCAL-00003" summary="changing buttons">
-      <created>1670431566806</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1670431566806</updated>
-    </task>
-    <task id="LOCAL-00004" summary="x to y and x,y label change">
-      <created>1670433742175</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1670433742175</updated>
-    </task>
-    <task id="LOCAL-00005" summary="model">
-      <created>1670441457521</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1670441457521</updated>
-    </task>
-    <task id="LOCAL-00006" summary="model">
-      <created>1670441799940</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1670441799940</updated>
-    </task>
-    <task id="LOCAL-00007" summary="model and input differentiation">
-      <created>1670443981738</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1670443981739</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,10 +143,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="readme and Approx" />
-    <MESSAGE value="changing buttons" />
-    <MESSAGE value="x to y and x,y label change" />
-    <MESSAGE value="model" />
-    <MESSAGE value="model and input differentiation" />
-    <option name="LAST_COMMIT_MESSAGE" value="model and input differentiation" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme and Approx" />
   </component>
 </project>

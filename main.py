@@ -15,7 +15,7 @@ plt.use('Qt5Agg')
 
 
 class MatplotlibCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, dpi=120):
+    def __init__(self, parent=None, dpi=115):
         fig = Figure(dpi=dpi)
         self.axes = fig.add_subplot(111)
         super(MatplotlibCanvas, self).__init__(fig)

@@ -6,7 +6,7 @@ import draw
 
 class Model:
     def __init__(self, color=0, xlabel="", ylabel="", df=None, theme="bmh", Graphs=[], vertical_lay=None,
-                 markersize=5,frames=[]):
+                 markersize=5, frames=[]):
         self.Graphs = Graphs
         self.color = color
         self.xlabel = xlabel
@@ -83,12 +83,12 @@ class Model:
     def init_graphs(self):
         self.clear_frames()
         self.Graphs.append(Graph())
-        self.Graphs.append(Graph())
-        self.Graphs.append(Graph())
-        self.Graphs.append(Graph())
-        self.Graphs.append(Graph())
-
-
+        self.Graphs.append(Hist())
+        self.Graphs.append(Area())
+        self.Graphs.append(HistVert())
+        self.Graphs.append(Hexbin())
+        self.Graphs.append(Box())
+        self.Graphs.append(PlotBox())
 
     def update_graphs_data(self):
         print("visualising started")
@@ -122,20 +122,34 @@ class Graph:
         self.theme = theme
         self.vertical_lay = verticalLay
 
-    def draw(self):
-        x, y = None
-        return x, y
+    def draw(self, ax):
+        self.df.plot(ax=ax)
 
 
 class Hist(Graph):
-    def draw(self):
-        plt.xlabel(self.xlabel)
-        plt.ylabel(self.ylabel)
-        plt.bar(self.x, self.y, c=self.color)
+    def draw(self, ax):
+        self.df.plot.bar(ax=ax)
 
 
-class Line(Graph):
-    def draw(self):
-        plt.xlabel(self.xlabel)
-        plt.ylabel(self.ylabel)
-        plt.plot(self.x, self.y, c=self.color)
+class Area(Graph):
+    def draw(self, ax):
+        self.df.plot.area(ax=ax)
+
+
+class HistVert(Graph):
+    def draw(self, ax):
+        self.df.plot.barh(ax=ax)
+
+
+class Hexbin(Graph):
+    def draw(self, ax):
+        self.df.plot.hexbin(ax=ax)
+
+
+class Box(Graph):
+    def draw(self, ax):
+        self.df.plot.box(ax=ax)
+
+class PlotBox(Graph):
+    def draw(self, ax):
+        self.df.plot.plot.box(ax=ax)

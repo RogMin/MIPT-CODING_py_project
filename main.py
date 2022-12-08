@@ -29,7 +29,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         height = 552
         self.setFixedSize(width, height)
         self.modl = model.Model()
-        self.themes = plt.style.available
+        self.themes = self.themes = ['bmh', 'classic', 'dark_background', 'fast',
+               'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
+               'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
+               'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
+               'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
+               'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
+               'Solarize_Light2', 'tableau-colorblind10']
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
@@ -43,35 +49,33 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.x2_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y1_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y2_line_edit.editingFinished.connect(self.get_x_y_arrays)
-        self.markerSizeSlider.sliderMoved.connect(self.set_marker_size)
+        self.toggleButton.clicked.connect(self.change_marker_bool)
+        self.markerSizeSlider.sliderReleased.connect(self.set_marker_size)
         self.modl.set_vertical_lay(self.verticalLayout)
         self.modl.init_graphs()
 
+    def change_marker_bool(self):
+        self.modl.change_marker_bool()
+
     def set_marker_size(self):
         self.modl.set_marker_size(self.markerSizeSlider.sliderPosition())
-        print("set marker size")
 
     def set_theme(self):
         self.modl.set_theme(self.themes[self.stylesDropdown.currentIndex()])
-        print("theme setted")
 
     def set_x_label(self):
         self.modl.set_x_label(self.x_label_inp.text())
-        print("x_label setted")
 
     def set_y_label(self):
         self.modl.set_y_label(self.y_label_inp.text())
-        print("y_label setted")
 
     def get_x_y_arrays(self):
         df = pd.Series(self.x1_line_edit.text(), self.x1_line_edit.text(), self.y1_line_edit.text(),
                        self.y2_line_edit.text())
         self.modl.set_x_y(df)
-        print("x_y_arrays got")
 
     def get_csv_file(self):
         """sends df to model"""
-        print("csv got")
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
 

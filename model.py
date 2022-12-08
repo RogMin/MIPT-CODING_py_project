@@ -85,10 +85,8 @@ class Model:
         self.Graphs.append(Graph())
         self.Graphs.append(Hist())
         self.Graphs.append(Area())
-        self.Graphs.append(HistVert())
         self.Graphs.append(Hexbin())
         self.Graphs.append(Box())
-        self.Graphs.append(PlotBox())
 
     def update_graphs_data(self):
         print("visualising started")
@@ -136,11 +134,6 @@ class Area(Graph):
         self.df.plot.area(ax=ax)
 
 
-class HistVert(Graph):
-    def draw(self, ax):
-        self.df.plot.barh(ax=ax)
-
-
 class Hexbin(Graph):
     def draw(self, ax):
         self.df.plot.hexbin(ax=ax)
@@ -150,6 +143,3 @@ class Box(Graph):
     def draw(self, ax):
         self.df.plot.box(ax=ax)
 
-class PlotBox(Graph):
-    def draw(self, ax):
-        self.df.plot.plot.box(ax=ax)

@@ -15,29 +15,37 @@ class Model:
         self.draw = draw.Draw()
 
     def set_x_y(self, df):
-        if not self.df.empty:
-            self.df = df
+        self.df = df
+        self.update_graphs_data()
+
 
     def csv_to_pd(self, df):
         self.df = df
+        self.update_graphs_data()
 
     def set_theme(self, theme):
         self.theme = theme
+        self.update_graphs_data()
 
     def x_to_y(self):
-        pass
+        # (...)
+        self.update_graphs_data()
 
     def y1_to_y2(self):
-        pass
+        # (...)
+        self.update_graphs_data()
 
     def x1_to_y2(self):
-        pass
+        # (...)
+        self.update_graphs_data()
 
     def set_x_label(self, label):
         self.xlabel = label
+        self.update_graphs_data()
 
     def set_y_label(self, label):
         self.ylabel = label
+        self.update_graphs_data()
 
     def init_graphs(self):
         pass

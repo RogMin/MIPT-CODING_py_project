@@ -29,6 +29,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         height = 552
         self.setFixedSize(width, height)
         self.modl = model.Model()
+        self.set_canvas()
         self.themes = plt.style.available
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)
@@ -44,14 +45,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.y1_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y2_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.markerSizeSlider.sliderMoved.connect(self.set_marker_size)
-        self.modl.vertical_lay = self.verticalLayout
+        self.modl.set_vertical_lay(self.verticalLayout)
+        self.modl.init_graphs()
 
     def set_marker_size(self):
         self.modl.set_marker_size(self.markerSizeSlider.sliderPosition())
         print("set marker size")
 
     def set_theme(self):
-        self.modl.set_theme(self.stylesDropdown.currentIndex())
+        self.modl.set_theme(self.themes(self.stylesDropdown.currentIndex()))
         print("themem setted")
 
     def set_x_label(self):
@@ -70,9 +72,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def get_csv_file(self):
         """sends df to model"""
+        print("csv got")
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
-        print("csv got")
+
+    def set_canvas(self):
+        self.modl.set_canvas(MatplotlibCanvas(self))
 
 
 if __name__ == "__main__":

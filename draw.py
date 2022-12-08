@@ -5,37 +5,37 @@ import matplotlib as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi
 from matplotlib.figure import Figure
 from matplotlib import style
-from PyQt5 import QtWidgets
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
-import model
-import numpy as np
+import main
 
-class MatplotlibCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, dpi=120):
-        fig = Figure(dpi=dpi)
-        self.axes = fig.add_subplot(111)
-        super(MatplotlibCanvas, self).__init__(fig)
+plt.use('Qt5Agg')
 
 
 class Draw:
-    def visualise(self,graphs):
+    def visualise(self, graphs, model):
         print("draw start")
-       # plt.style.use(graphs[0].theme)
-        print(graphs)
         for graph in graphs:
-            graph.canvas = MatplotlibCanvas(self)
+            plt.style.use(graph.theme)
+            print(graph.canvas)
             print("connected with graph")
             w = graph.canvas.get_width_height()
-            frame = QtWidgets.QFrame(self)
+            frame = main.QtWidgets.QFrame()
+            print(frame)
             frame.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
-            print("set layout")
-            a_l = QtWidgets.QStackedLayout(frame)
+            a_l = main.QtWidgets.QStackedLayout(frame)
             a_l.addWidget(graph.canvas)
-            print("minimum height")
+            print("before set frame")
             frame.setMinimumHeight(w[1])
-            model.Model.get_vert_layout().addWidget(frame)
+            print("minimum height")
+            print(graph.vertical_lay)
+            graph.vertical_lay.addWidget(frame)
+            print("vert")
             graph.canvas.axes.cla()
+            print("legend")
             ax = graph.canvas.axes
+            print("ax")
             graph.df.plot(ax=ax)
             print("set legend draw")
             legend = ax.legend()
@@ -43,8 +43,9 @@ class Draw:
             ax.set_xlabel(graph.x_lbl)
             ax.set_ylabel(graph.y_lbl)
             graph.canvas.draw()
+            model.set_frames(frame)
             print("printing started")
-    print("end")
+        print("end")
 
     # self.toolbar = Navi(self.canv, self.centralwidget)
     # self.horizontalLayout.addWidget(self.toolbar)

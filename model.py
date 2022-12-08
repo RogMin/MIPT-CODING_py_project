@@ -5,7 +5,8 @@ import draw
 
 
 class Model:
-    def __init__(self, color=0, xlabel="", ylabel="", df=pd.Series(), theme="bmh", Graphs=[], vertical_lay=None,markersize=5):
+    def __init__(self, color=0, xlabel="", ylabel="", df=None, theme="bmh", Graphs=[], vertical_lay=None,
+                 markersize=5, canv=None, frames=[]):
         self.Graphs = Graphs
         self.color = color
         self.xlabel = xlabel
@@ -15,11 +16,25 @@ class Model:
         self.marker_sz = markersize
         self.draw = draw.Draw()
         self.vertical_lay = vertical_lay
-        self.init_graphs()
+        self.canvas = canv
+        self.frames = frames
+
+    def set_frames(self, frames):
+        self.frames.append(frames)
+        print("frames set")
+
+    def set_canvas(self, canvas):
+        self.canvas = canvas
+        print("canvas: ", self.canvas)
+
+    def set_vertical_lay(self, lay):
+        self.vertical_lay = lay
+        print(self.vertical_lay)
 
     def set_marker_size(self, markersize):
         print("setting marker size")
         self.marker_sz = markersize
+        self.update_graphs_data()
 
     def set_x_y(self, df):
         print("seting_x_y")
@@ -33,6 +48,7 @@ class Model:
 
     def set_theme(self, theme):
         print("setting theme")
+        print(theme)
         self.theme = theme
         self.update_graphs_data()
 
@@ -56,32 +72,50 @@ class Model:
         self.xlabel = label
         self.update_graphs_data()
 
-    def get_vert_layout(self):
-        return self.vertical_lay
-
     def set_y_label(self, label):
         print("setting_y_label")
         self.ylabel = label
         self.update_graphs_data()
 
+    def clear_frames(self):
+        print("clear frames")
+        print(self.frames)
+        for frame in self.frames:
+            print("remove frames")
+            self.vertical_lay.removeWidget(frame)
+        self.frames = []
+
     def init_graphs(self):
+        self.clear_frames()
         self.Graphs.append(Graph())
         self.Graphs.append(Graph())
-        pass
+        self.Graphs.append(Graph())
+        self.Graphs.append(Graph())
+        self.Graphs.append(Graph())
+
+
 
     def update_graphs_data(self):
         print("visualising started")
+        self.Graphs = []
+        print("graphs null")
+        self.init_graphs()
+        print("init graphs")
         for graph in self.Graphs:
+            print("ЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫА")
             graph.x_lbl = self.xlabel
             graph.y_lbl = self.ylabel
             graph.df = self.df
             graph.marker_size = self.marker_sz
             graph.theme = self.theme
-        self.draw.visualise(self.Graphs)
+            graph.vertical_lay = self.vertical_lay
+            graph.canvas = self.canvas
+        self.draw.visualise(self.Graphs,self)
 
 
 class Graph:
-    def __init__(self, marker_size=5, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", df=None, canvas=None,theme = "bmh"):
+    def __init__(self, marker_size=5, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", df=None, canvas=None,
+                 theme="bmh", verticalLay=None):
         self.marker_size = marker_size
         self.color = color
         self.color2 = color2
@@ -91,6 +125,7 @@ class Graph:
         self.canvas = canvas
         self.df = df
         self.theme = theme
+        self.vertical_lay = verticalLay
 
     def draw(self):
         x, y = None

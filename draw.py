@@ -22,7 +22,7 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 
 class Draw:
     def visualise(self,graphs):
-        plt.style.use(graphs[0].theme)
+#        plt.style.use(graphs[0].theme)
         for graph in graphs:
             canv = MatplotlibCanvas(self)
             w = canv.get_width_height()

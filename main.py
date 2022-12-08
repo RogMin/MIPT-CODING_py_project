@@ -32,7 +32,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
-        self.stylesDropdown.currentIndexChanged['QString'].connect(self.set_theme())
+        self.stylesDropdown.currentIndexChanged['QString'].connect(self.set_theme)
         self.modl = model.Model()
         self.x_to_y_button.clicked.connect(self.modl.x_to_y)
         self.y1_to_y2_button.clicked.connect(self.modl.y1_to_y2)
@@ -54,8 +54,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.set_y_label(self.y_label_inp.text())
 
     def get_x_y_arrays(self):
-        df = pd.Series(self.x1_line_edit.text(), self.x1_line_edit.text(), self.y1_line_edit.text(),
-                       self.y2_line_edit.text())
+        df = pd.Series(self.x1_line_edit.text(), self.x1_line_edit.text(), self.y1_line_edit.text(),self.y2_line_edit.text())
         self.modl.set_x_y(df)
 
     def get_csv_file(self):

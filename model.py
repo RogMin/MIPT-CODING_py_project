@@ -5,7 +5,7 @@ import draw
 
 
 class Model:
-    def __init__(self, color=0, xlabel="", ylabel="", df=pd.series(), theme="", Graphs=[]):
+    def __init__(self, color=0, xlabel="", ylabel="", df=pd.Series(), theme="", Graphs=[]):
         self.Graphs = Graphs
         self.color = color
         self.xlabel = xlabel
@@ -17,7 +17,6 @@ class Model:
     def set_x_y(self, df):
         self.df = df
         self.update_graphs_data()
-
 
     def csv_to_pd(self, df):
         self.df = df
@@ -59,10 +58,8 @@ class Model:
         print("visualising started")
 
 
-
 class Graph:
-    def __init__(self, marker_size=0, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", x=[np.ones(5), 5 * np.ones(5)],
-                 y=[5 * np.ones(5), np.ones(5)]):
+    def __init__(self, marker_size=0, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", x=[np.ones(5), 5 * np.ones(5)],y=[5 * np.ones(5), np.ones(5)]):
         self.marker_size = marker_size
         self.color = color
         self.color2 = color2
@@ -72,9 +69,8 @@ class Graph:
         self.x = x
         self.y = y
 
-   def draw():
-       pass
-
+    def draw(self):
+        pass
 
 
 class Hist(Graph):

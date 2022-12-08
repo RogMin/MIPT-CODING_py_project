@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-
+import main
 import draw
 
 
 class Model:
     def __init__(self, color=0, xlabel="", ylabel="", df=None, theme="bmh", Graphs=[], vertical_lay=None,
-                 markersize=5, canv=None, frames=[]):
+                 markersize=5,frames=[]):
         self.Graphs = Graphs
         self.color = color
         self.xlabel = xlabel
@@ -16,16 +16,11 @@ class Model:
         self.marker_sz = markersize
         self.draw = draw.Draw()
         self.vertical_lay = vertical_lay
-        self.canvas = canv
         self.frames = frames
 
     def set_frames(self, frames):
         self.frames.append(frames)
         print("frames set")
-
-    def set_canvas(self, canvas):
-        self.canvas = canvas
-        print("canvas: ", self.canvas)
 
     def set_vertical_lay(self, lay):
         self.vertical_lay = lay
@@ -109,8 +104,8 @@ class Model:
             graph.marker_size = self.marker_sz
             graph.theme = self.theme
             graph.vertical_lay = self.vertical_lay
-            graph.canvas = self.canvas
-        self.draw.visualise(self.Graphs,self)
+            graph.canvas = main.MatplotlibCanvas(main.MainWindow())
+        self.draw.visualise(self.Graphs, self)
 
 
 class Graph:

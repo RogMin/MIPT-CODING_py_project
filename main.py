@@ -76,9 +76,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
 
-    def set_canvas(self):
-        self.modl.set_canvas(MatplotlibCanvas(self))
-
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

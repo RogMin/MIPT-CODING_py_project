@@ -52,8 +52,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("set marker size")
 
     def set_theme(self):
-        self.modl.set_theme(self.themes(self.stylesDropdown.currentIndex()))
-        print("themem setted")
+        self.modl.set_theme(self.themes[self.stylesDropdown.currentIndex()])
+        print("theme setted")
 
     def set_x_label(self):
         self.modl.set_x_label(self.x_label_inp.text())

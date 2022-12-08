@@ -28,7 +28,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         width = 941
         height = 552
         self.setFixedSize(width, height)
-
+        self.modl = model.Model()
         self.themes = plt.style.available
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)
@@ -43,7 +43,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.x2_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y1_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y2_line_edit.editingFinished.connect(self.get_x_y_arrays)
-        self.modl = model.Model()
         self.modl.vertical_lay = self.verticalLayout
 
     def set_theme(self):

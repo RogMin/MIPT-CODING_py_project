@@ -29,7 +29,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         height = 552
         self.setFixedSize(width, height)
         self.modl = model.Model()
-        self.set_canvas()
         self.themes = plt.style.available
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)

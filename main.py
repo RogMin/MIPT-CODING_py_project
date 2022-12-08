@@ -8,6 +8,7 @@ from matplotlib import style
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
+import data
 import model
 
 plt.use('Qt5Agg')
@@ -25,11 +26,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.themes = plt.style.available
         self.setupUi(self)
-        self.modl = model.Model()
-        self.modl.vertical_layout = self.verticalLayout
         self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
-        self.stylesDropdown.currentIndexChanged['QString'].connect(self.set_theme)
+        self.stylesDropdown.currentIndexChanged['QString'].connect(self.set_theme())
+        self.modl = model.Model()
         self.x_to_y_button.clicked.connect(self.modl.x_to_y)
         self.y1_to_y2_button.clicked.connect(self.modl.y1_to_y2)
         self.x1_to_y2_button.clicked.connect(self.modl.x1_to_y2)
@@ -39,13 +39,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.x2_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y1_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.y2_line_edit.editingFinished.connect(self.get_x_y_arrays)
-        self.markerSizeSlider.sliderMoved.connect(self.set_marker)
-
-    def set_marker(self):
-        self.modl.set_marker_size(self.markerSizeSlider.sliderPosition())
 
     def set_theme(self):
-        self.modl.set_theme(self.stylesDropdown.currentIndex())
+        model.Model.set_theme(self.stylesDropdown.currentIndex())
 
     def set_x_label(self):
         self.modl.set_x_label(self.x_label_inp.text())

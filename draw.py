@@ -8,9 +8,9 @@ from matplotlib import style
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 import pandas as pd
+import data
 import draw
 import model
-import main
 import numpy as np
 
 class MatplotlibCanvas(FigureCanvasQTAgg):
@@ -22,24 +22,39 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 
 class Draw:
     def visualise(self,graphs):
-#        plt.style.use(graphs[0].theme)
+        plt.style.use(graphs[0].theme)
         for graph in graphs:
-            canv = MatplotlibCanvas(self)
+            graph.canvas = MatplotlibCanvas(self)
+            print("connected with graph")
+            canv = graph.canvas
             w = canv.get_width_height()
             a = QtWidgets.QFrame(self)
             a.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
             a_l = QtWidgets.QStackedLayout(a)
             a_l.addWidget(canv)
             a.setMinimumHeight(w[1])
-            model.Model.get_vert_lay().addWidget(a)
+            graph.test = a
+            self.verticalLayout.addWidget(a)
             canv.axes.cla()
             ax = canv.axes
             self.df.plot(ax=ax)
             legend = ax.legend()
             legend.set_draggable(True)
-            ax.set_xlabel(graph.x_lbl)
-            ax.set_ylabel(graph.y_lbl)
+            ax.set_xlabel(graph.graph.x_lbl)
+            ax.set_ylabel(graph.graph.y_lbl)
             canv.draw()
+            print("printing started")
+            # plt.figure(figsize=(8, 6), dpi=300)  # размер графика
+            # plt.xlabel(self.xlabel)  # подписи к осям
+            # plt.ylabel(self.ylabel)
+            # plt.grid(True, linestyle="--")  # пунктирная сетка
+            # plt.plot(self.x, self.y, c=self.color)
+            #
+            # plt.bar(self.x, self.y, c=self.color)
+            # plt.plot(self.x, self.y, c=self.color)
+            #
+            # plt.legend()
+            # plt.show()
     print("end")
 
     # self.toolbar = Navi(self.canv, self.centralwidget)

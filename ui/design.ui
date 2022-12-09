@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>941</width>
-    <height>552</height>
+    <width>846</width>
+    <height>510</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -121,9 +121,9 @@ QScrollBar::sub-line {
    <widget class="QPushButton" name="openCSVButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>81</width>
+      <x>680</x>
+      <y>20</y>
+      <width>161</width>
       <height>21</height>
      </rect>
     </property>
@@ -131,107 +131,13 @@ QScrollBar::sub-line {
      <string>Open CSV</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="x_to_y_button">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>x to y</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="y1_to_y2_button">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>y1 to y2</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="x1_to_y2_button">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>x1 to y2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="x1_line_edit">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>10</y>
-      <width>131</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>x1</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="x2_line_edit">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>10</y>
-      <width>131</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>x2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="y1_line_edit">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>10</y>
-      <width>131</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>y1</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="y2_line_edit">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>10</y>
-      <width>131</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>y2</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="stylesDropdown">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>10</y>
-      <width>101</width>
-      <height>22</height>
+      <x>680</x>
+      <y>60</y>
+      <width>161</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="editable">
@@ -244,79 +150,11 @@ QScrollBar::sub-line {
      <string/>
     </property>
    </widget>
-   <widget class="QComboBox" name="methodsDropdown">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>240</y>
-      <width>81</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="placeholderText" stdset="0">
-     <string>Methods</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="kLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>K = (...)</string>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="approxButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>170</y>
-      <width>60</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 132, 255);
-border-radius: 30px;
-border-style: outset;
-</string>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/icons/icons/check.svg</normaloff>:/icons/icons/check.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QLabel" name="approxLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Approx on/off</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QToolButton" name="toggleButton">
     <property name="geometry">
      <rect>
-      <x>785</x>
-      <y>50</y>
+      <x>688</x>
+      <y>120</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -344,8 +182,8 @@ border: 3px solid rgb(0, 132, 255);
    <widget class="QLabel" name="toggleLabel">
     <property name="geometry">
      <rect>
-      <x>787</x>
-      <y>30</y>
+      <x>690</x>
+      <y>100</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -360,8 +198,8 @@ border: 3px solid rgb(0, 132, 255);
    <widget class="QSlider" name="markerSizeSlider">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>250</y>
+      <x>680</x>
+      <y>320</y>
       <width>161</width>
       <height>22</height>
      </rect>
@@ -373,8 +211,8 @@ border: 3px solid rgb(0, 132, 255);
    <widget class="QComboBox" name="lineDropdown">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>50</y>
+      <x>750</x>
+      <y>120</y>
       <width>91</width>
       <height>22</height>
      </rect>
@@ -386,8 +224,8 @@ border: 3px solid rgb(0, 132, 255);
    <widget class="QLabel" name="lineNLabel">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>30</y>
+      <x>750</x>
+      <y>100</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -402,8 +240,8 @@ border: 3px solid rgb(0, 132, 255);
    <widget class="QToolButton" name="blueLineColorButton">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>120</y>
+      <x>770</x>
+      <y>190</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -421,8 +259,8 @@ border: 6px solid rgb(0, 11, 204);
    <widget class="QToolButton" name="redLineColorButton">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>120</y>
+      <x>810</x>
+      <y>190</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -440,8 +278,8 @@ border: 6px solid rgb(204, 0, 3);
    <widget class="QToolButton" name="grayLineColorButton">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>160</y>
+      <x>770</x>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -459,8 +297,8 @@ border: 6px solid rgb(56, 62, 74);
    <widget class="QToolButton" name="whiteLineColorButton">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>160</y>
+      <x>810</x>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -478,8 +316,8 @@ border: 6px solid rgb(212, 212, 212);
    <widget class="QToolButton" name="yellowLlineColorButton">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>200</y>
+      <x>770</x>
+      <y>270</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -497,8 +335,8 @@ border: 6px solid rgb(211, 197, 0);
    <widget class="QToolButton" name="brownLineColorButton">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>200</y>
+      <x>810</x>
+      <y>270</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -516,8 +354,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>50</y>
+      <x>10</x>
+      <y>10</y>
       <width>661</width>
       <height>491</height>
      </rect>
@@ -550,8 +388,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QLabel" name="markerTypeLabel">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>100</y>
+      <x>680</x>
+      <y>170</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -563,8 +401,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QLabel" name="lineColorLabel">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>100</y>
+      <x>770</x>
+      <y>170</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -579,8 +417,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QToolButton" name="triangleMarkerTypeButton">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>120</y>
+      <x>700</x>
+      <y>190</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -605,8 +443,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QToolButton" name="circleMarkerTypeButton">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>160</y>
+      <x>700</x>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -628,8 +466,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QToolButton" name="squareMarketTypeButton">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>200</y>
+      <x>700</x>
+      <y>270</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -654,8 +492,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QLabel" name="markerSizeLabel">
     <property name="geometry">
      <rect>
-      <x>820</x>
-      <y>270</y>
+      <x>730</x>
+      <y>340</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -667,8 +505,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QLineEdit" name="x_label_inp">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>300</y>
+      <x>680</x>
+      <y>370</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -680,8 +518,8 @@ border: 6px solid rgb(113, 40, 0);
    <widget class="QLineEdit" name="y_label_inp">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>330</y>
+      <x>680</x>
+      <y>400</y>
       <width>161</width>
       <height>21</height>
      </rect>

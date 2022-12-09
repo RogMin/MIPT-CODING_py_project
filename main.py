@@ -2,7 +2,7 @@ import sys
 
 import matplotlib as plt
 import pandas as pd
-from PyQt5 import QtWidgets
+from PyQt5 import QtCore,QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from matplotlib import style
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
@@ -15,7 +15,7 @@ plt.use('Qt5Agg')
 
 
 class MatplotlibCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, dpi=115):
+    def __init__(self, parent=None, dpi=112):
         fig = Figure(dpi=dpi)
         self.axes = fig.add_subplot(111)
         super(MatplotlibCanvas, self).__init__(fig)
@@ -24,9 +24,10 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
+        self.setAcceptDrops(True)
         self.setWindowTitle("Easy Plot")
-        width = 941
-        height = 552
+        width = 846
+        height = 510
         self.setFixedSize(width, height)
         self.modl = model.Model()
         self.themes = self.themes = ['bmh', 'classic', 'dark_background', 'fast',
@@ -40,18 +41,38 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
         self.stylesDropdown.currentIndexChanged['QString'].connect(self.set_theme)
-        self.x_to_y_button.clicked.connect(self.modl.x_to_y)
-        self.y1_to_y2_button.clicked.connect(self.modl.y1_to_y2)
-        self.x1_to_y2_button.clicked.connect(self.modl.x1_to_y2)
         self.x_label_inp.editingFinished.connect(self.set_x_label)
         self.y_label_inp.editingFinished.connect(self.set_y_label)
-        self.x1_line_edit.editingFinished.connect(self.get_x_y_arrays)
-        self.x2_line_edit.editingFinished.connect(self.get_x_y_arrays)
-        self.y1_line_edit.editingFinished.connect(self.get_x_y_arrays)
-        self.y2_line_edit.editingFinished.connect(self.get_x_y_arrays)
         self.toggleButton.clicked.connect(self.change_marker_bool)
         self.markerSizeSlider.sliderReleased.connect(self.set_marker_size)
         self.modl.set_vertical_lay(self.verticalLayout)
+
+
+
+    def dragEnterEvent(self, e):
+        if e.mimeData().hasUrls:
+            e.accept()
+        else:
+            e.ignore()
+
+    def dragMoveEvent(self, e):
+        if e.mimeData().hasUrls:
+            e.accept()
+        else:
+            e.ignore()
+
+    def dropEvent(self, e):
+        if e.mimeData().hasUrls:
+            e.setDropAction(QtCore.Qt.CopyAction)
+            e.accept()
+            for url in e.mimeData().urls():
+                fname = str(url.toLocalFile())
+            self.readData(fname)
+        else:
+            e.ignore()
+
+    def readData(self, name):
+        self.modl.csv_to_pd(pd.read_csv(name, encoding='utf-8').fillna(0))
 
     def change_marker_bool(self):
         self.modl.change_marker_bool()
@@ -67,11 +88,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def set_y_label(self):
         self.modl.set_y_label(self.y_label_inp.text())
-
-    def get_x_y_arrays(self):
-        df = pd.Series(self.x1_line_edit.text(), self.x1_line_edit.text(), self.y1_line_edit.text(),
-                       self.y2_line_edit.text())
-        self.modl.set_x_y(df)
 
     def get_csv_file(self):
         """sends df to model"""

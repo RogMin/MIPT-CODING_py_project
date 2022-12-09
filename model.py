@@ -30,31 +30,12 @@ class Model:
         self.marker_sz = markersize
         self.update_graphs_data()
 
-    def set_x_y(self, df):
-        self.df = df
-        self.update_graphs_data()
-
     def csv_to_pd(self, df):
         self.df = df
         self.update_graphs_data()
 
     def set_theme(self, theme):
         self.theme = theme
-        self.update_graphs_data()
-
-    def x_to_y(self):
-        print("changing_x_to_y")
-        # (...)
-        self.update_graphs_data()
-
-    def y1_to_y2(self):
-        print("changing_y1_to_y2")
-        # (...)
-        self.update_graphs_data()
-
-    def x1_to_y2(self):
-        print("changing_x1_to_y2")
-        # (...)
         self.update_graphs_data()
 
     def set_x_label(self, label):
@@ -68,7 +49,13 @@ class Model:
     def clear_frames(self):
         for graph in self.Graphs:
             print("remove frames")
+            # graph.frame
+            # graph.vertical_lay.removeWidget(graph.frame)
+
+            # graph.vertical_lay.
             graph.vertical_lay.removeWidget(graph.frame)
+            del graph.frame
+            graph.vertical_lay.update()
             print("remove fra2s")
         self.Graphs = []
 
@@ -78,8 +65,14 @@ class Model:
         self.Graphs.append(Graph())
         self.Graphs.append(Hist())
         self.Graphs.append(Area())
+        self.Graphs.append(StackedArea())
         self.Graphs.append(Hexbin())
         self.Graphs.append(Box())
+        self.Graphs.append(BoxHoriz())
+        self.Graphs.append(HistStacked())
+        self.Graphs.append(HistHoriz())
+        self.Graphs.append(HistHorizStacked())
+        self.Graphs.append(Pie())
 
     def update_graphs_data(self):
         self.init_graphs()
@@ -97,7 +90,7 @@ class Model:
 
 class Graph:
     def __init__(self, marker_size=5, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", df=None, canvas=None,
-                 theme="bmh", verticalLay=None, frame = None):
+                 theme="bmh", verticalLay=None, frame=None):
         self.marker_size = marker_size
         self.color = color
         self.color2 = color2
@@ -117,6 +110,28 @@ class Graph:
         else:
             self.df.plot(ax=ax)
 
+class Pie(Graph):
+    def draw(self, ax):
+        self.df.plot.pie(figsize=(6, 6))
+
+
+
+
+class HistHoriz(Graph):
+    def draw(self, ax):
+        if self.marker_on_off:
+            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size)
+        else:
+            self.df.plot.barh(ax=ax)
+
+
+class HistHorizStacked(Graph):
+    def draw(self, ax):
+        if self.marker_on_off:
+            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size, stacked=True)
+        else:
+            self.df.plot.barh(ax=ax, stacked=True)
+
 
 class Hist(Graph):
     def draw(self, ax):
@@ -126,12 +141,28 @@ class Hist(Graph):
             self.df.plot.bar(ax=ax)
 
 
+class HistStacked(Graph):
+    def draw(self, ax):
+        if self.marker_on_off:
+            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size, stacked=True)
+        else:
+            self.df.plot.bar(ax=ax, stacked=True)
+
+
 class Area(Graph):
     def draw(self, ax):
         if self.marker_on_off:
             self.df.plot.area(ax=ax, style="o", ms=self.marker_size)
         else:
             self.df.plot.area(ax=ax)
+
+
+class StackedArea(Graph):
+    def draw(self, ax):
+        if self.marker_on_off:
+            self.df.plot.area(stacked=True, ax=ax, style="o", ms=self.marker_size)
+        else:
+            self.df.plot.area(stacked=True, ax=ax)
 
 
 class Hexbin(Graph):
@@ -145,6 +176,14 @@ class Hexbin(Graph):
 class Box(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.box(ax=ax, style="o", ms = self.marker_size)
+            self.df.plot.box(ax=ax, style="o", ms=self.marker_size)
         else:
             self.df.plot.box(ax=ax)
+
+
+class BoxHoriz(Graph):
+    def draw(self, ax):
+        if self.marker_on_off:
+            self.df.plot.box(vert=False, ax=ax, style="o", ms=self.marker_size)
+        else:
+            self.df.plot.box(vert=False, ax=ax)

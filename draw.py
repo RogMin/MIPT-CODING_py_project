@@ -19,20 +19,16 @@ class Draw:
         for graph in graphs:
             try:
                 plt.style.use(graph.theme)
-                print(graph.canvas)
                 w = graph.canvas.get_width_height()
                 frame = main.QtWidgets.QFrame()
                 frame.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
-                a_l = main.QtWidgets.QStackedLayout(frame)
-                a_l.addWidget(graph.canvas)
+                lay = main.QtWidgets.QStackedLayout(frame)
+                lay.addWidget(graph.canvas)
                 frame.setMinimumHeight(w[1])
                 graph.vertical_lay.addWidget(frame)
                 graph.canvas.axes.cla()
-                print("legend")
                 ax = graph.canvas.axes
-                print("ax")
-                graf = graph.draw(ax)
-                print("set legend draw")
+                graph.draw(ax)
                 try:
                     legend = ax.legend()
                     legend.set_draggable(True)
@@ -40,11 +36,13 @@ class Draw:
                     print("")
                 ax.set_xlabel(graph.x_lbl)
                 ax.set_ylabel(graph.y_lbl)
-                graph.canvas.draw()
-                graph.frame = graf
+               # graph.canvas.draw()
+                graph.frame = frame
+                #lay.removeWidget(frame)
+                graph.refmodl.Graphs = graphs
             except:
                 continue
-            print("printing started")
+        model.Graphs = graphs
         print("end")
 
     # self.toolbar = Navi(self.canv, self.centralwidget)

@@ -69,10 +69,11 @@ class Model:
         for graph in self.Graphs:
             print("remove frames")
             graph.vertical_lay.removeWidget(graph.frame)
+            print("remove fra2s")
 
     def init_graphs(self):
-        self.Graphs = []
         self.clear_frames()
+        self.Graphs = []
         self.Graphs.append(Graph())
         self.Graphs.append(Hist())
         self.Graphs.append(Area())
@@ -81,7 +82,6 @@ class Model:
 
     def update_graphs_data(self):
         print("visualising started")
-        self.Graphs = []
         print("graphs null")
         self.init_graphs()
         print("init graphs")

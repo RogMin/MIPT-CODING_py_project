@@ -1,5 +1,5 @@
 import sys
-
+from pandas.plotting import scatter_matrix
 from ui.design import Ui_MainWindow
 import matplotlib as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi

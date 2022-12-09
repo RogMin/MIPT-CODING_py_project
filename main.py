@@ -2,7 +2,7 @@ import sys
 
 import matplotlib as plt
 import pandas as pd
-from PyQt5 import QtCore,QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from matplotlib import style
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
@@ -31,12 +31,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setFixedSize(width, height)
         self.modl = model.Model()
         self.themes = self.themes = ['bmh', 'classic', 'dark_background', 'fast',
-               'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
-               'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
-               'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
-               'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
-               'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
-               'Solarize_Light2', 'tableau-colorblind10']
+                                     'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
+                                     'seaborn-colorblind', 'seaborn-dark-palette', 'seaborn-dark',
+                                     'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted', 'seaborn-notebook',
+                                     'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
+                                     'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
+                                     'Solarize_Light2', 'tableau-colorblind10']
         self.setupUi(self)
         self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
@@ -46,8 +46,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.toggleButton.clicked.connect(self.change_marker_bool)
         self.markerSizeSlider.sliderReleased.connect(self.set_marker_size)
         self.modl.set_vertical_lay(self.verticalLayout)
-
-
 
     def dragEnterEvent(self, e):
         if e.mimeData().hasUrls:

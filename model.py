@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import main
 import draw
+from pandas.plotting import scatter_matrix
 
 
 class Model:
@@ -110,11 +111,16 @@ class Graph:
         else:
             self.df.plot(ax=ax)
 
+
 class Pie(Graph):
     def draw(self, ax):
-        self.df.plot.pie(figsize=(6, 6))
-
-
+        plot.pie(
+            labels=["AA", "BB", "CC", "DD"],
+            colors=["r", "g", "b", "c"],
+            autopct="%.2f",
+            fontsize=20,
+            figsize=(6, 6),
+        );
 
 
 class HistHoriz(Graph):

@@ -1,5 +1,4 @@
 import sys
-from pandas.plotting import scatter_matrix
 from ui.design import Ui_MainWindow
 import matplotlib as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as Navi
@@ -15,35 +14,23 @@ plt.use('Qt5Agg')
 
 class Draw:
     def visualise(self, graphs, model):
-        print("draw start")
         for graph in graphs:
             try:
                 plt.style.use(graph.theme)
-                w = graph.canvas.get_width_height()
-                frame = main.QtWidgets.QFrame()
+                frame = main.QtWidgets.QFrame()  # Create new frame
                 frame.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
-                lay = main.QtWidgets.QStackedLayout(frame)
+                lay = main.QtWidgets.QStackedLayout(frame)  # Set frame layout
                 lay.addWidget(graph.canvas)
-                frame.setMinimumHeight(w[1])
+                frame.setMinimumHeight(graph.canvas.get_width_height()[1])  # Set minimum height to graphic frame
                 graph.vertical_lay.addWidget(frame)
-                graph.canvas.axes.cla()
                 ax = graph.canvas.axes
+                ax.cla()
                 graph.draw(ax)
-                try:
-                    legend = ax.legend()
-                    legend.set_draggable(True)
-                except:
-                    print("")
+                legend = ax.legend()
+                legend.set_draggable(True)
                 ax.set_xlabel(graph.x_lbl)
                 ax.set_ylabel(graph.y_lbl)
-               # graph.canvas.draw()
                 graph.frame = frame
-                #lay.removeWidget(frame)
-                graph.refmodl.Graphs = graphs
             except:
                 continue
         model.Graphs = graphs
-        print("end")
-
-    # self.toolbar = Navi(self.canv, self.centralwidget)
-    # self.horizontalLayout.addWidget(self.toolbar)

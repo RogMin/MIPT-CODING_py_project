@@ -1,5 +1,4 @@
 import sys
-
 import matplotlib as plt
 import pandas as pd
 from PyQt5 import QtCore, QtWidgets
@@ -7,7 +6,6 @@ from PyQt5.QtWidgets import QFileDialog
 from matplotlib import style
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
-
 import model
 from ui.design import Ui_MainWindow
 
@@ -46,6 +44,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.toggleButton.clicked.connect(self.change_marker_bool)
         self.markerSizeSlider.sliderReleased.connect(self.set_marker_size)
         self.modl.set_vertical_lay(self.verticalLayout)
+        self.triangleMarkerTypeButton.clicked.connect(self.triangle_button)
+        self.circleMarkerTypeButton.clicked.connect(self.circle_button)
+        self.squareMarketTypeButton.clicked.connect(self.square_button)
+        self.grayLineColorButton.clicked.connect(self.change_color_to_gray)
+        self.blueLineColorButton.clicked.connect(self.change_color_to_blue)
+        self.whiteLineColorButton.clicked.connect(self.change_color_to_white)
+        self.brownLineColorButton.clicked.connect(self.change_color_to_brown)
+        self.yellowLlineColorButton.clicked.connect(self.change_color_to_yellow)
+        self.redLineColorButton.clicked.connect(self.change_color_to_red)
+
+
+    """Push and drop event"""
+
 
     def dragEnterEvent(self, e):
         if e.mimeData().hasUrls:
@@ -72,6 +83,30 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def readData(self, name):
         self.modl.csv_to_pd(pd.read_csv(name, encoding='utf-8').fillna(0))
 
+    """Change variables in model"""
+
+    def triangle_button(self):
+        self.modl.set_line_type('-')
+
+    def circle_button(self):
+        self.modl.set_line_type('bs-')
+
+    def square_button(self):
+        self.modl.set_line_type('ro-')
+
+    def change_color_to_gray(self,color):
+        self.modl.change_color("GRAY")
+    def change_color_to_red(self,color):
+        self.modl.change_color("RED")
+    def change_color_to_white(self,color):
+        self.modl.change_color("WHITE")
+    def change_color_to_yellow(self,color):
+        self.modl.change_color("YELLOW")
+    def change_color_to_brown(self,color):
+        self.modl.change_color("BROWN")
+    def change_color_to_blue(self,color):
+        self.modl.change_color("BLUE")
+
     def change_marker_bool(self):
         self.modl.change_marker_bool()
 
@@ -88,7 +123,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.set_y_label(self.y_label_inp.text())
 
     def get_csv_file(self):
-        """sends df to model"""
+        """send dataframe to model"""
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
 

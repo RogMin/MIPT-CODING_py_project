@@ -1,27 +1,34 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import main
 import draw
-from pandas.plotting import scatter_matrix
 
 
 class Model:
-    def __init__(self, color=0, xlabel="", ylabel="", df=None, theme="bmh", vertical_lay=None,
-                 markersize=5):
+    def __init__(self, df=None, theme="bmh", vertical_lay=None, markersize=2):
         self.Graphs = []
-        self.color = color
-        self.xlabel = xlabel
-        self.ylabel = ylabel
+        self.color = ''
+        self.xlabel = ""
+        self.ylabel = ""
         self.df = df
         self.theme = theme
         self.marker_sz = markersize
         self.draw = draw.Draw()
         self.vertical_lay = vertical_lay
         self.marker_on_off = False
+        self.line_type = ''
+
+    def set_line_type(self, typ):
+        self.line_type = typ
+        self.update_graphs_data()
 
     def set_vertical_lay(self, lay):
         self.vertical_lay = lay
-        print(self.vertical_lay)
+
+    def change_color(self,color):
+        self.color = color
+        self.update_graphs_data()
 
     def change_marker_bool(self):
         self.marker_on_off = not self.marker_on_off
@@ -48,19 +55,15 @@ class Model:
         self.update_graphs_data()
 
     def clear_frames(self):
+        """Dell old graphics"""
         for graph in self.Graphs:
-            print("remove frames")
-            # graph.frame
-            # graph.vertical_lay.removeWidget(graph.frame)
-
-            # graph.vertical_lay.
             graph.vertical_lay.removeWidget(graph.frame)
             del graph.frame
             graph.vertical_lay.update()
-            print("remove fra2s")
         self.Graphs = []
 
     def init_graphs(self):
+        """Create graphics prefabs"""
         self.clear_frames()
         self.Graphs = []
         self.Graphs.append(Graph())
@@ -73,9 +76,9 @@ class Model:
         self.Graphs.append(HistStacked())
         self.Graphs.append(HistHoriz())
         self.Graphs.append(HistHorizStacked())
-        self.Graphs.append(Pie())
 
     def update_graphs_data(self):
+        """Set vars in graphics from class init"""
         self.init_graphs()
         for graph in self.Graphs:
             graph.x_lbl = self.xlabel
@@ -86,16 +89,15 @@ class Model:
             graph.vertical_lay = self.vertical_lay
             graph.canvas = main.MatplotlibCanvas(main.MainWindow())
             graph.marker_on_off = self.marker_on_off
+            graph.line_type = self.line_type
+            graph.color = self.color
         self.draw.visualise(self.Graphs, self)
 
 
 class Graph:
-    def __init__(self, marker_size=5, color=0, color2=0, fig_type=0, x_lbl="", y_lbl="", df=None, canvas=None,
+    def __init__(self, marker_size=2, x_lbl="", y_lbl="", df=None, canvas=None,
                  theme="bmh", verticalLay=None, frame=None):
         self.marker_size = marker_size
-        self.color = color
-        self.color2 = color2
-        self.fig_type = fig_type
         self.x_lbl = x_lbl
         self.y_lbl = y_lbl
         self.canvas = canvas
@@ -104,92 +106,116 @@ class Graph:
         self.vertical_lay = verticalLay
         self.marker_on_off = False
         self.frame = frame
+        self.line_type = ''
+        self.color = ""
 
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot(ax=ax, style="o", ms=self.marker_size)
+            self.df.plot(ax=ax, style="o", ms=self.marker_size,color = self.color)
         else:
-            self.df.plot(ax=ax)
-
-
-class Pie(Graph):
-    def draw(self, ax):
-        plot.pie(
-            labels=["AA", "BB", "CC", "DD"],
-            colors=["r", "g", "b", "c"],
-            autopct="%.2f",
-            fontsize=20,
-            figsize=(6, 6),
-        );
+            if self.color != "":
+                self.df.plot(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
+            else:
+                self.df.plot(ax=ax, linewidth=self.marker_size, style=self.line_type)
 
 
 class HistHoriz(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size)
+            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size,color = self.color)
         else:
-            self.df.plot.barh(ax=ax)
+            if self.color != "":
+                self.df.plot.barh(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
+            else:
+                self.df.plot.barh(ax=ax, linewidth=self.marker_size, style=self.line_type)
+
+
 
 
 class HistHorizStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size, stacked=True)
+            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size, stacked=True,color = self.color)
         else:
-            self.df.plot.barh(ax=ax, stacked=True)
+            if self.color != "":
+                self.df.plot.barh(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type,
+                                  color=self.color)
+            else:
+                self.df.plot.barh(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type)
+
+
 
 
 class Hist(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size)
+            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size,color = self.color)
         else:
-            self.df.plot.bar(ax=ax)
+            if self.color != "":
+                self.df.plot.bar(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
+            else:
+                self.df.plot.bar(ax=ax, linewidth=self.marker_size, style=self.line_type)
 
 
 class HistStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size, stacked=True)
+            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size, stacked=True,color = self.color)
         else:
-            self.df.plot.bar(ax=ax, stacked=True)
+            if self.color != "":
+                self.df.plot.bar(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type,
+                                 color=self.color)
+            else:
+                self.df.plot.bar(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type)
 
 
 class Area(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.area(ax=ax, style="o", ms=self.marker_size)
+            self.df.plot.area(ax=ax, style="o", ms=self.marker_size,color = self.color)
         else:
-            self.df.plot.area(ax=ax)
+            if self.color != "":
+                self.df.plot.area(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
+            else:
+                self.df.plot.area(ax=ax, linewidth=self.marker_size, style=self.line_type)
+
 
 
 class StackedArea(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.area(stacked=True, ax=ax, style="o", ms=self.marker_size)
+            self.df.plot.area(stacked=True, ax=ax, style="o", ms=self.marker_size,color = self.color)
         else:
-            self.df.plot.area(stacked=True, ax=ax)
+            if self.color != "":
+                self.df.plot.area(stacked=True, ax=ax, linewidth=self.marker_size, style=self.line_type,
+                                  color=self.color)
+            else:
+                self.df.plot.area(stacked=True, ax=ax, linewidth=self.marker_size, style=self.line_type)
+
+
 
 
 class Hexbin(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.hexbin(ax=ax, style="o", ms=self.marker_size)
+            self.df.plot.hexbin(ax=ax, style="o", ms=self.marker_size,color = self.color)
         else:
-            self.df.plot.hexbin(ax=ax)
+            if self.color != "":
+                self.df.plot.hexbin(ax=ax, style=self.line_type, color=self.color)
+            else:
+                self.df.plot.hexbin(ax=ax, style=self.line_type)
+
 
 
 class Box(Graph):
     def draw(self, ax):
-        if self.marker_on_off:
-            self.df.plot.box(ax=ax, style="o", ms=self.marker_size)
-        else:
-            self.df.plot.box(ax=ax)
+        if not self.marker_on_off:
+            self.df.plot.box(ax=ax,style = self.line_type,color = self.color)
 
 
 class BoxHoriz(Graph):
     def draw(self, ax):
-        if self.marker_on_off:
-            self.df.plot.box(vert=False, ax=ax, style="o", ms=self.marker_size)
-        else:
-            self.df.plot.box(vert=False, ax=ax)
+        if not self.marker_on_off:
+            self.df.plot.box(vert=False, ax=ax,style = self.line_type,color = self.color)
+
+

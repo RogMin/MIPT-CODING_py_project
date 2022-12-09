@@ -5,9 +5,9 @@ import draw
 
 
 class Model:
-    def __init__(self, color=0, xlabel="", ylabel="", df=None, theme="bmh", Graphs=[], vertical_lay=None,
+    def __init__(self, color=0, xlabel="", ylabel="", df=None, theme="bmh", vertical_lay=None,
                  markersize=5):
-        self.Graphs = Graphs
+        self.Graphs = []
         self.color = color
         self.xlabel = xlabel
         self.ylabel = ylabel
@@ -70,6 +70,7 @@ class Model:
             print("remove frames")
             graph.vertical_lay.removeWidget(graph.frame)
             print("remove fra2s")
+        self.Graphs = []
 
     def init_graphs(self):
         self.clear_frames()
@@ -81,12 +82,8 @@ class Model:
         self.Graphs.append(Box())
 
     def update_graphs_data(self):
-        print("visualising started")
-        print("graphs null")
         self.init_graphs()
-        print("init graphs")
         for graph in self.Graphs:
-            print("ЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫАЫА")
             graph.x_lbl = self.xlabel
             graph.y_lbl = self.ylabel
             graph.df = self.df

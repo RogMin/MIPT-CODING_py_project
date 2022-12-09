@@ -31,7 +31,7 @@ class Draw:
                 print("legend")
                 ax = graph.canvas.axes
                 print("ax")
-                graph.draw(ax)
+                graf = graph.draw(ax)
                 print("set legend draw")
                 try:
                     legend = ax.legend()
@@ -41,7 +41,7 @@ class Draw:
                 ax.set_xlabel(graph.x_lbl)
                 ax.set_ylabel(graph.y_lbl)
                 graph.canvas.draw()
-                graph.frame = frame
+                graph.frame = graf
             except:
                 continue
             print("printing started")

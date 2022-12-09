@@ -52,7 +52,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.toggleButton.clicked.connect(self.change_marker_bool)
         self.markerSizeSlider.sliderReleased.connect(self.set_marker_size)
         self.modl.set_vertical_lay(self.verticalLayout)
-        self.modl.init_graphs()
 
     def change_marker_bool(self):
         self.modl.change_marker_bool()

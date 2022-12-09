@@ -111,7 +111,7 @@ class Graph:
 
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot(ax=ax, style="o", ms=self.marker_size,color = self.color)
+            self.df.plot(ax=ax, style="o", ms=self.marker_size)
         else:
             if self.color != "":
                 self.df.plot(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
@@ -122,7 +122,7 @@ class Graph:
 class HistHoriz(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size,color = self.color)
+            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size)
         else:
             if self.color != "":
                 self.df.plot.barh(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
@@ -135,7 +135,7 @@ class HistHoriz(Graph):
 class HistHorizStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size, stacked=True,color = self.color)
+            self.df.plot.barh(ax=ax, style="o", ms=self.marker_size, stacked=True)
         else:
             if self.color != "":
                 self.df.plot.barh(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type,
@@ -149,7 +149,7 @@ class HistHorizStacked(Graph):
 class Hist(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size,color = self.color)
+            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size)
         else:
             if self.color != "":
                 self.df.plot.bar(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
@@ -160,7 +160,7 @@ class Hist(Graph):
 class HistStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size, stacked=True,color = self.color)
+            self.df.plot.bar(ax=ax, style="o", ms=self.marker_size, stacked=True)
         else:
             if self.color != "":
                 self.df.plot.bar(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type,
@@ -172,7 +172,7 @@ class HistStacked(Graph):
 class Area(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.area(ax=ax, style="o", ms=self.marker_size,color = self.color)
+            self.df.plot.area(ax=ax, style="o", ms=self.marker_size)
         else:
             if self.color != "":
                 self.df.plot.area(ax=ax, linewidth=self.marker_size, style=self.line_type, color=self.color)
@@ -184,7 +184,7 @@ class Area(Graph):
 class StackedArea(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.area(stacked=True, ax=ax, style="o", ms=self.marker_size,color = self.color)
+            self.df.plot.area(stacked=True, ax=ax, style="o", ms=self.marker_size)
         else:
             if self.color != "":
                 self.df.plot.area(stacked=True, ax=ax, linewidth=self.marker_size, style=self.line_type,
@@ -198,7 +198,7 @@ class StackedArea(Graph):
 class Hexbin(Graph):
     def draw(self, ax):
         if self.marker_on_off:
-            self.df.plot.hexbin(ax=ax, style="o", ms=self.marker_size,color = self.color)
+            self.df.plot.hexbin(ax=ax, style="o", ms=self.marker_size)
         else:
             if self.color != "":
                 self.df.plot.hexbin(ax=ax, style=self.line_type, color=self.color)

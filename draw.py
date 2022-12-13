@@ -17,12 +17,12 @@ class Draw:
         for graph in graphs:
             try:
                 plt.style.use(graph.theme)
-                frame = main.QtWidgets.QFrame()  # Create new frame
-                frame.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
-                lay = main.QtWidgets.QStackedLayout(frame)  # Set frame layout
+                graph.frame = main.QtWidgets.QFrame()  # Create new frame
+                graph.frame.setStyleSheet("QFrame{background_color: rgb(0, 0, 0, 0)}")
+                lay = main.QtWidgets.QStackedLayout(graph.frame)  # Set frame layout
                 lay.addWidget(graph.canvas)
-                frame.setMinimumHeight(graph.canvas.get_width_height()[1])  # Set minimum height to graphic frame
-                graph.vertical_lay.addWidget(frame)
+                graph.frame.setMinimumHeight(graph.canvas.get_width_height()[1])  # Set minimum height to graphic frame
+                graph.vertical_lay.addWidget(graph.frame)
                 ax = graph.canvas.axes
                 ax.cla()
                 graph.draw(ax)
@@ -30,7 +30,7 @@ class Draw:
                 legend.set_draggable(True)
                 ax.set_xlabel(graph.x_lbl)
                 ax.set_ylabel(graph.y_lbl)
-                graph.frame = frame
+
             except:
                 continue
         model.Graphs = graphs

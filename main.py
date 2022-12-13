@@ -53,10 +53,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.brownLineColorButton.clicked.connect(self.change_color_to_brown)
         self.yellowLlineColorButton.clicked.connect(self.change_color_to_yellow)
         self.redLineColorButton.clicked.connect(self.change_color_to_red)
-
+        self.saveButton.clicked.connect(self.save_graph)
 
     """Push and drop event"""
-
 
     def dragEnterEvent(self, e):
         if e.mimeData().hasUrls:
@@ -82,8 +81,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def readData(self, name):
         self.modl.csv_to_pd(pd.read_csv(name, encoding='utf-8').fillna(0))
+        self.update_save_dropbox()
+
 
     """Change variables in model"""
+
+    def update_save_dropbox(self):
+        self.graphselDropdown.clear()
+        self.graphselDropdown.addItems(map(str,list(range(1, len(self.modl.Graphs)+1))))
+
+
+    def save_graph(self):
+        self.modl.save_graph(self.graphselDropdown.currentIndexChanged - 1)
 
     def triangle_button(self):
         self.modl.set_line_type('-')
@@ -94,17 +103,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def square_button(self):
         self.modl.set_line_type('ro-')
 
-    def change_color_to_gray(self,color):
+    def change_color_to_gray(self, color):
         self.modl.change_color("GRAY")
-    def change_color_to_red(self,color):
+
+    def change_color_to_red(self, color):
         self.modl.change_color("RED")
-    def change_color_to_white(self,color):
+
+    def change_color_to_white(self, color):
         self.modl.change_color("WHITE")
-    def change_color_to_yellow(self,color):
+
+    def change_color_to_yellow(self, color):
         self.modl.change_color("YELLOW")
-    def change_color_to_brown(self,color):
+
+    def change_color_to_brown(self, color):
         self.modl.change_color("BROWN")
-    def change_color_to_blue(self,color):
+
+    def change_color_to_blue(self, color):
         self.modl.change_color("BLUE")
 
     def change_marker_bool(self):
@@ -124,8 +138,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def get_csv_file(self):
         """send dataframe to model"""
-        self.modl.csv_to_pd(
-            pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
+        self.modl.csv_to_pd(pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
+        self.update_save_dropbox()
 
 
 if __name__ == "__main__":

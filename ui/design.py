@@ -120,16 +120,16 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.openCSVButton = QtWidgets.QPushButton(self.centralwidget)
-        self.openCSVButton.setGeometry(QtCore.QRect(680, 20, 161, 21))
+        self.openCSVButton.setGeometry(QtCore.QRect(680, 70, 161, 21))
         self.openCSVButton.setObjectName("openCSVButton")
         self.stylesDropdown = QtWidgets.QComboBox(self.centralwidget)
-        self.stylesDropdown.setGeometry(QtCore.QRect(680, 60, 161, 21))
+        self.stylesDropdown.setGeometry(QtCore.QRect(680, 110, 161, 21))
         self.stylesDropdown.setEditable(False)
         self.stylesDropdown.setCurrentText("")
         self.stylesDropdown.setProperty("placeholderText", "")
         self.stylesDropdown.setObjectName("stylesDropdown")
         self.toggleButton = QtWidgets.QToolButton(self.centralwidget)
-        self.toggleButton.setGeometry(QtCore.QRect(738, 110, 41, 41))
+        self.toggleButton.setGeometry(QtCore.QRect(688, 160, 41, 41))
         self.toggleButton.setStyleSheet("background-color: #272b33;\n"
 "border-radius: 20px;\n"
 "border: 3px solid rgb(0, 132, 255);\n"
@@ -140,16 +140,12 @@ class Ui_MainWindow(object):
         self.toggleButton.setIcon(icon)
         self.toggleButton.setIconSize(QtCore.QSize(24, 24))
         self.toggleButton.setObjectName("toggleButton")
-        self.toggleLabel = QtWidgets.QLabel(self.centralwidget)
-        self.toggleLabel.setGeometry(QtCore.QRect(740, 90, 47, 13))
-        self.toggleLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.toggleLabel.setObjectName("toggleLabel")
         self.markerSizeSlider = QtWidgets.QSlider(self.centralwidget)
-        self.markerSizeSlider.setGeometry(QtCore.QRect(680, 320, 161, 22))
+        self.markerSizeSlider.setGeometry(QtCore.QRect(680, 370, 161, 22))
         self.markerSizeSlider.setOrientation(QtCore.Qt.Horizontal)
         self.markerSizeSlider.setObjectName("markerSizeSlider")
         self.blueLineColorButton = QtWidgets.QToolButton(self.centralwidget)
-        self.blueLineColorButton.setGeometry(QtCore.QRect(770, 190, 31, 31))
+        self.blueLineColorButton.setGeometry(QtCore.QRect(770, 240, 31, 31))
         self.blueLineColorButton.setStyleSheet("background-color: #1f232a;\n"
 "border-radius: 15.45px;\n"
 "border: 6px solid rgb(0, 11, 204);\n"
@@ -157,7 +153,7 @@ class Ui_MainWindow(object):
         self.blueLineColorButton.setText("")
         self.blueLineColorButton.setObjectName("blueLineColorButton")
         self.redLineColorButton = QtWidgets.QToolButton(self.centralwidget)
-        self.redLineColorButton.setGeometry(QtCore.QRect(810, 190, 31, 31))
+        self.redLineColorButton.setGeometry(QtCore.QRect(810, 240, 31, 31))
         self.redLineColorButton.setStyleSheet("background-color: #1f232a;\n"
 "border-radius: 15.45px;\n"
 "border: 6px solid rgb(204, 0, 3);\n"
@@ -165,7 +161,7 @@ class Ui_MainWindow(object):
         self.redLineColorButton.setText("")
         self.redLineColorButton.setObjectName("redLineColorButton")
         self.grayLineColorButton = QtWidgets.QToolButton(self.centralwidget)
-        self.grayLineColorButton.setGeometry(QtCore.QRect(770, 230, 31, 31))
+        self.grayLineColorButton.setGeometry(QtCore.QRect(770, 280, 31, 31))
         self.grayLineColorButton.setStyleSheet("background-color: #1f232a;\n"
 "border-radius: 15.45px;\n"
 "border: 6px solid rgb(56, 62, 74);\n"
@@ -173,7 +169,7 @@ class Ui_MainWindow(object):
         self.grayLineColorButton.setText("")
         self.grayLineColorButton.setObjectName("grayLineColorButton")
         self.whiteLineColorButton = QtWidgets.QToolButton(self.centralwidget)
-        self.whiteLineColorButton.setGeometry(QtCore.QRect(810, 230, 31, 31))
+        self.whiteLineColorButton.setGeometry(QtCore.QRect(810, 280, 31, 31))
         self.whiteLineColorButton.setStyleSheet("background-color: #1f232a;\n"
 "border-radius: 15.45px;\n"
 "border: 6px solid rgb(212, 212, 212);\n"
@@ -181,7 +177,7 @@ class Ui_MainWindow(object):
         self.whiteLineColorButton.setText("")
         self.whiteLineColorButton.setObjectName("whiteLineColorButton")
         self.yellowLlineColorButton = QtWidgets.QToolButton(self.centralwidget)
-        self.yellowLlineColorButton.setGeometry(QtCore.QRect(770, 270, 31, 31))
+        self.yellowLlineColorButton.setGeometry(QtCore.QRect(770, 320, 31, 31))
         self.yellowLlineColorButton.setStyleSheet("background-color: #1f232a;\n"
 "border-radius: 15.45px;\n"
 "border: 6px solid rgb(211, 197, 0);\n"
@@ -189,7 +185,7 @@ class Ui_MainWindow(object):
         self.yellowLlineColorButton.setText("")
         self.yellowLlineColorButton.setObjectName("yellowLlineColorButton")
         self.brownLineColorButton = QtWidgets.QToolButton(self.centralwidget)
-        self.brownLineColorButton.setGeometry(QtCore.QRect(810, 270, 31, 31))
+        self.brownLineColorButton.setGeometry(QtCore.QRect(810, 320, 31, 31))
         self.brownLineColorButton.setStyleSheet("background-color: #1f232a;\n"
 "border-radius: 15.45px;\n"
 "border: 6px solid rgb(113, 40, 0);\n"
@@ -198,26 +194,26 @@ class Ui_MainWindow(object):
         self.brownLineColorButton.setObjectName("brownLineColorButton")
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setGeometry(QtCore.QRect(10, 10, 661, 491))
-        self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollArea.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 661, 491))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 651, 491))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinAndMaxSize)
         self.verticalLayout.setObjectName("verticalLayout")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.markerTypeLabel = QtWidgets.QLabel(self.centralwidget)
-        self.markerTypeLabel.setGeometry(QtCore.QRect(680, 170, 71, 16))
+        self.markerTypeLabel.setGeometry(QtCore.QRect(680, 220, 71, 16))
         self.markerTypeLabel.setObjectName("markerTypeLabel")
         self.lineColorLabel = QtWidgets.QLabel(self.centralwidget)
-        self.lineColorLabel.setGeometry(QtCore.QRect(770, 170, 71, 16))
+        self.lineColorLabel.setGeometry(QtCore.QRect(770, 220, 71, 16))
         self.lineColorLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.lineColorLabel.setObjectName("lineColorLabel")
         self.triangleMarkerTypeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.triangleMarkerTypeButton.setGeometry(QtCore.QRect(700, 190, 31, 31))
+        self.triangleMarkerTypeButton.setGeometry(QtCore.QRect(700, 240, 31, 31))
         self.triangleMarkerTypeButton.setStyleSheet("")
         self.triangleMarkerTypeButton.setText("")
         icon1 = QtGui.QIcon()
@@ -226,7 +222,7 @@ class Ui_MainWindow(object):
         self.triangleMarkerTypeButton.setIconSize(QtCore.QSize(36, 36))
         self.triangleMarkerTypeButton.setObjectName("triangleMarkerTypeButton")
         self.circleMarkerTypeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.circleMarkerTypeButton.setGeometry(QtCore.QRect(700, 230, 31, 31))
+        self.circleMarkerTypeButton.setGeometry(QtCore.QRect(700, 280, 31, 31))
         self.circleMarkerTypeButton.setStyleSheet("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/icons/circle.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -234,7 +230,7 @@ class Ui_MainWindow(object):
         self.circleMarkerTypeButton.setIconSize(QtCore.QSize(36, 36))
         self.circleMarkerTypeButton.setObjectName("circleMarkerTypeButton")
         self.squareMarketTypeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.squareMarketTypeButton.setGeometry(QtCore.QRect(700, 270, 31, 31))
+        self.squareMarketTypeButton.setGeometry(QtCore.QRect(700, 320, 31, 31))
         self.squareMarketTypeButton.setStyleSheet("")
         self.squareMarketTypeButton.setText("")
         icon3 = QtGui.QIcon()
@@ -243,14 +239,56 @@ class Ui_MainWindow(object):
         self.squareMarketTypeButton.setIconSize(QtCore.QSize(36, 36))
         self.squareMarketTypeButton.setObjectName("squareMarketTypeButton")
         self.markerSizeLabel = QtWidgets.QLabel(self.centralwidget)
-        self.markerSizeLabel.setGeometry(QtCore.QRect(730, 340, 71, 16))
+        self.markerSizeLabel.setGeometry(QtCore.QRect(730, 390, 71, 16))
         self.markerSizeLabel.setObjectName("markerSizeLabel")
         self.x_label_inp = QtWidgets.QLineEdit(self.centralwidget)
-        self.x_label_inp.setGeometry(QtCore.QRect(680, 370, 161, 21))
+        self.x_label_inp.setGeometry(QtCore.QRect(680, 420, 161, 21))
         self.x_label_inp.setObjectName("x_label_inp")
         self.y_label_inp = QtWidgets.QLineEdit(self.centralwidget)
-        self.y_label_inp.setGeometry(QtCore.QRect(680, 400, 161, 21))
+        self.y_label_inp.setGeometry(QtCore.QRect(680, 450, 161, 21))
         self.y_label_inp.setObjectName("y_label_inp")
+        self.saveButton = QtWidgets.QToolButton(self.centralwidget)
+        self.saveButton.setGeometry(QtCore.QRect(750, 160, 41, 41))
+        self.saveButton.setStyleSheet("background-color: rgb(227, 4, 75);\n"
+"border-radius: 15px;\n"
+"border-style: outset;\n"
+"")
+        self.saveButton.setIcon(icon)
+        self.saveButton.setIconSize(QtCore.QSize(32, 32))
+        self.saveButton.setObjectName("saveButton")
+        self.graphselDropdown = QtWidgets.QComboBox(self.centralwidget)
+        self.graphselDropdown.setGeometry(QtCore.QRect(800, 160, 41, 41))
+        self.graphselDropdown.setStyleSheet("background-color: rgb(47, 52, 62);\n"
+"border-radius: 15px;\n"
+"\n"
+"")
+        self.graphselDropdown.setEditable(False)
+        self.graphselDropdown.setCurrentText("")
+        self.graphselDropdown.setProperty("placeholderText", "")
+        self.graphselDropdown.setObjectName("graphselDropdown")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(690, 140, 171, 24))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.toggleLabel = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.toggleLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.toggleLabel.setObjectName("toggleLabel")
+        self.horizontalLayout.addWidget(self.toggleLabel)
+        self.toggleLabel_2 = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        self.toggleLabel_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.toggleLabel_2.setObjectName("toggleLabel_2")
+        self.horizontalLayout.addWidget(self.toggleLabel_2)
+        self.graphtypesDropdown = QtWidgets.QComboBox(self.centralwidget)
+        self.graphtypesDropdown.setGeometry(QtCore.QRect(680, 30, 161, 21))
+        self.graphtypesDropdown.setEditable(False)
+        self.graphtypesDropdown.setCurrentText("")
+        self.graphtypesDropdown.setProperty("placeholderText", "")
+        self.graphtypesDropdown.setObjectName("graphtypesDropdown")
+        self.graphTypeLabel = QtWidgets.QLabel(self.centralwidget)
+        self.graphTypeLabel.setGeometry(QtCore.QRect(710, 10, 161, 20))
+        self.graphTypeLabel.setObjectName("graphTypeLabel")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -260,10 +298,12 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.openCSVButton.setText(_translate("MainWindow", "Open CSV"))
-        self.toggleLabel.setText(_translate("MainWindow", "On/off"))
         self.markerTypeLabel.setText(_translate("MainWindow", "Marker type"))
         self.lineColorLabel.setText(_translate("MainWindow", "Line color"))
         self.markerSizeLabel.setText(_translate("MainWindow", "Marker size"))
         self.x_label_inp.setPlaceholderText(_translate("MainWindow", "x-axis label"))
         self.y_label_inp.setPlaceholderText(_translate("MainWindow", "y-axis label"))
+        self.toggleLabel.setText(_translate("MainWindow", "On/off"))
+        self.toggleLabel_2.setText(_translate("MainWindow", "Save"))
+        self.graphTypeLabel.setText(_translate("MainWindow", "Types of graphs"))
 import ui.resources_rc

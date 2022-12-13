@@ -19,6 +19,17 @@ class Model:
         self.marker_on_off = False
         self.line_type = ''
 
+    def save_graph(self, index):
+        graph = self.Graphs[index]
+        plt.style.use(graph.theme)
+        ax = graph.canvas.axes
+        ax.cla()
+        graph.draw(ax)
+        legend = ax.legend()
+        legend.set_draggable(True)
+        ax.set_xlabel(graph.x_lbl)
+        ax.set_ylabel(graph.y_lbl)
+
     def set_line_type(self, typ):
         self.line_type = typ
         self.update_graphs_data()
@@ -26,7 +37,7 @@ class Model:
     def set_vertical_lay(self, lay):
         self.vertical_lay = lay
 
-    def change_color(self,color):
+    def change_color(self, color):
         self.color = color
         self.update_graphs_data()
 
@@ -130,8 +141,6 @@ class HistHoriz(Graph):
                 self.df.plot.barh(ax=ax, linewidth=self.marker_size, style=self.line_type)
 
 
-
-
 class HistHorizStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:
@@ -142,8 +151,6 @@ class HistHorizStacked(Graph):
                                   color=self.color)
             else:
                 self.df.plot.barh(ax=ax, stacked=True, linewidth=self.marker_size, style=self.line_type)
-
-
 
 
 class Hist(Graph):
@@ -180,7 +187,6 @@ class Area(Graph):
                 self.df.plot.area(ax=ax, linewidth=self.marker_size, style=self.line_type)
 
 
-
 class StackedArea(Graph):
     def draw(self, ax):
         if self.marker_on_off:
@@ -191,8 +197,6 @@ class StackedArea(Graph):
                                   color=self.color)
             else:
                 self.df.plot.area(stacked=True, ax=ax, linewidth=self.marker_size, style=self.line_type)
-
-
 
 
 class Hexbin(Graph):
@@ -206,16 +210,13 @@ class Hexbin(Graph):
                 self.df.plot.hexbin(ax=ax, style=self.line_type)
 
 
-
 class Box(Graph):
     def draw(self, ax):
         if not self.marker_on_off:
-            self.df.plot.box(ax=ax,style = self.line_type,color = self.color)
+            self.df.plot.box(ax=ax, style=self.line_type, color=self.color)
 
 
 class BoxHoriz(Graph):
     def draw(self, ax):
         if not self.marker_on_off:
-            self.df.plot.box(vert=False, ax=ax,style = self.line_type,color = self.color)
-
-
+            self.df.plot.box(vert=False, ax=ax, style=self.line_type, color=self.color)

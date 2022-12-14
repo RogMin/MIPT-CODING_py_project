@@ -1,37 +1,20 @@
-import matplotlib.pyplot as plt
 import main
 import draw
 
 
 class Model:
-    def __init__(self, df=None, theme="bmh", vertical_lay=None, markersize=2):
+    def __init__(self):
         self.Graphs = []
+        self.marker_sz = 2
+        self.theme = "bmh"
         self.color = ''
         self.xlabel = ""
         self.ylabel = ""
-        self.df = df
-        self.theme = theme
-        self.marker_sz = markersize
-        self.draw = draw.Draw()
-        self.vertical_lay = vertical_lay
-        self.marker_on_off = False
         self.line_type = ''
-
-    def save_graph(self, index):
-        graph = self.Graphs[index]
-        plt.style.use(graph.theme)
-        graph.frame = main.QtWidgets.QFrame()  # Create new frame
-        lay = main.QtWidgets.QStackedLayout(graph.frame)  # Set frame layout
-        lay.addWidget(graph.canvas)
-        graph.frame.setMinimumHeight(graph.canvas.get_width_height()[1])  # Set minimum height to graphic frame
-        graph.vertical_lay.addWidget(graph.frame)
-        ax = graph.canvas.axes
-        ax.cla()
-        ax.set_xlabel(graph.x_lbl)
-        ax.set_ylabel(graph.y_lbl)
-        legend = ax.legend()
-        legend.set_draggable(True)
-        graph.draw(ax)
+        self.df = None
+        self.draw = draw.Draw()
+        self.vertical_lay = None
+        self.marker_on_off = False
 
     def set_line_type(self, typ):
         self.line_type = typ
@@ -68,16 +51,17 @@ class Model:
         self.ylabel = label
         self.update_graphs_data()
 
-    def clear_frames(self):
+    def clear_graphs(self):
         """Dell old graphics"""
         for graph in self.Graphs:
             graph.vertical_lay.removeWidget(graph.frame)
+            graph.vertical_lay.removeWidget(graph.toolbar)
             graph.vertical_lay.update()
+        self.Graphs = []
 
     def init_graphs(self):
         """Create graphics prefabs"""
-        self.clear_frames()
-        self.Graphs = []
+        self.clear_graphs()
         self.Graphs.append(Graph())
         self.Graphs.append(Hist())
         self.Graphs.append(Area())
@@ -105,20 +89,20 @@ class Model:
             graph.color = self.color
         self.draw.visualise(self.Graphs, self)
 
-
 class Graph:
     def __init__(self):
         self.marker_size = 2
         self.x_lbl = ""
         self.y_lbl = ""
-        self.canvas = None
-        self.df = None
         self.theme = "bmh"
-        self.vertical_lay = None
-        self.marker_on_off = False
-        self.frame = None
         self.line_type = ''
         self.color = ""
+        self.vertical_lay = None
+        self.canvas = None
+        self.frame = None
+        self.df = None
+        self.toolbar = None
+        self.marker_on_off = False
 
     def draw(self, ax):
         if self.marker_on_off:

@@ -24,8 +24,16 @@ class Draw:
                 legend.set_draggable(True)
                 graph.draw(ax)
                 self.draw_toolbar(graph)
-
+                try:
+                    print(graph.toolbar.canvas)
+                except:
+                    print("Application cannot this plot. The plot is empty")
+                    continue
             except:
+                graph.vertical_lay.removeWidget(graph.frame)
+                graph.vertical_lay.removeWidget(graph.toolbar)
+                graph.vertical_lay.update()
+                graphs.remove(graph)
                 continue
         self.change_theme(graphs[0].theme)
         model.Graphs = graphs

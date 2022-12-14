@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>846</width>
+    <width>847</width>
     <height>510</height>
    </rect>
   </property>
@@ -122,7 +122,7 @@ QScrollBar::sub-line {
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>70</y>
+      <y>20</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -135,7 +135,7 @@ QScrollBar::sub-line {
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>110</y>
+      <y>60</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -153,8 +153,8 @@ QScrollBar::sub-line {
    <widget class="QToolButton" name="toggleButton">
     <property name="geometry">
      <rect>
-      <x>688</x>
-      <y>160</y>
+      <x>690</x>
+      <y>110</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -183,7 +183,7 @@ border: 3px solid rgb(0, 132, 255);
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>370</y>
+      <y>320</y>
       <width>161</width>
       <height>22</height>
      </rect>
@@ -196,7 +196,7 @@ border: 3px solid rgb(0, 132, 255);
     <property name="geometry">
      <rect>
       <x>770</x>
-      <y>240</y>
+      <y>190</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -215,7 +215,7 @@ border: 6px solid rgb(0, 11, 204);
     <property name="geometry">
      <rect>
       <x>810</x>
-      <y>240</y>
+      <y>190</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -234,7 +234,7 @@ border: 6px solid rgb(204, 0, 3);
     <property name="geometry">
      <rect>
       <x>770</x>
-      <y>280</y>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -253,7 +253,7 @@ border: 6px solid rgb(56, 62, 74);
     <property name="geometry">
      <rect>
       <x>810</x>
-      <y>280</y>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -272,7 +272,7 @@ border: 6px solid rgb(212, 212, 212);
     <property name="geometry">
      <rect>
       <x>770</x>
-      <y>320</y>
+      <y>270</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -291,7 +291,7 @@ border: 6px solid rgb(211, 197, 0);
     <property name="geometry">
      <rect>
       <x>810</x>
-      <y>320</y>
+      <y>270</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -333,6 +333,178 @@ border: 6px solid rgb(113, 40, 0);
        <height>491</height>
       </rect>
      </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="BrightText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="ButtonText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="HighlightedText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="ToolTipBase">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="BrightText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="ButtonText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="HighlightedText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="ToolTipBase">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="BrightText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="ButtonText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="HighlightedText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="ToolTipBase">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="sizeConstraint">
        <enum>QLayout::SetMinAndMaxSize</enum>
@@ -344,7 +516,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>220</y>
+      <y>170</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -357,7 +529,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>770</x>
-      <y>220</y>
+      <y>170</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -373,7 +545,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>240</y>
+      <y>190</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -399,7 +571,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>280</y>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -422,7 +594,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>320</y>
+      <y>270</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -448,7 +620,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>390</y>
+      <y>340</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -461,7 +633,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>420</y>
+      <y>370</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -474,7 +646,7 @@ border: 6px solid rgb(113, 40, 0);
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>450</y>
+      <y>400</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -483,11 +655,11 @@ border: 6px solid rgb(113, 40, 0);
      <string>y-axis label</string>
     </property>
    </widget>
-   <widget class="QToolButton" name="saveButton">
+   <widget class="QToolButton" name="ResetButton">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>160</y>
+      <x>780</x>
+      <y>110</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -509,45 +681,20 @@ border-style: outset;
      </size>
     </property>
    </widget>
-   <widget class="QComboBox" name="graphselDropdown">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>160</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(47, 52, 62);
-border-radius: 15px;
-
-</string>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText" stdset="0">
-     <string/>
-    </property>
-   </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>140</y>
-      <width>171</width>
-      <height>24</height>
+      <x>680</x>
+      <y>84</y>
+      <width>191</width>
+      <height>20</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="toggleLabel">
        <property name="text">
-        <string>On/off</string>
+        <string>Point mode</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -557,7 +704,7 @@ border-radius: 15px;
      <item>
       <widget class="QLabel" name="toggleLabel_2">
        <property name="text">
-        <string>Save</string>
+        <string>Update</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -565,38 +712,6 @@ border-radius: 15px;
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QComboBox" name="graphtypesDropdown">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>30</y>
-      <width>161</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText" stdset="0">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="graphTypeLabel">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>10</y>
-      <width>161</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Types of graphs</string>
-    </property>
    </widget>
   </widget>
  </widget>

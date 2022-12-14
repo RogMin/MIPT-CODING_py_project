@@ -4,12 +4,13 @@ import draw
 
 class Model:
     def __init__(self):
+        self.old_graphs = None
         self.Graphs = []
         self.marker_sz = 2
         self.theme = "bmh"
         self.color = ''
-        self.xlabel = ""
-        self.ylabel = ""
+        self.x_label = ""
+        self.y_label = ""
         self.line_type = ''
         self.df = None
         self.draw = draw.Draw()
@@ -31,8 +32,8 @@ class Model:
         self.marker_on_off = not self.marker_on_off
         self.update_graphs_data()
 
-    def set_marker_size(self, markersize):
-        self.marker_sz = markersize
+    def set_marker_size(self, marker_size):
+        self.marker_sz = marker_size
         self.update_graphs_data()
 
     def csv_to_pd(self, df):
@@ -42,14 +43,18 @@ class Model:
     def set_theme(self, theme):
         self.theme = theme
         self.update_graphs_data()
+        self.update_graphs_data()
 
     def set_x_label(self, label):
-        self.xlabel = label
+        self.x_label = label
         self.update_graphs_data()
 
     def set_y_label(self, label):
-        self.ylabel = label
+        self.y_label = label
         self.update_graphs_data()
+
+    def reset(self):
+        self.csv_to_pd(self.df)
 
     def clear_graphs(self):
         """Dell old graphics"""
@@ -77,8 +82,8 @@ class Model:
         """Set vars in graphics from class init"""
         self.init_graphs()
         for graph in self.Graphs:
-            graph.x_lbl = self.xlabel
-            graph.y_lbl = self.ylabel
+            graph.x_lbl = self.x_label
+            graph.y_lbl = self.y_label
             graph.df = self.df
             graph.marker_size = self.marker_sz
             graph.theme = self.theme
@@ -88,6 +93,7 @@ class Model:
             graph.line_type = self.line_type
             graph.color = self.color
         self.draw.visualise(self.Graphs, self)
+
 
 class Graph:
     def __init__(self):

@@ -2,6 +2,7 @@ import matplotlib as plt
 from matplotlib import style
 import main
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navi
+
 plt.use('Qt5Agg')
 
 
@@ -24,21 +25,17 @@ class Draw:
                 legend.set_draggable(True)
                 graph.draw(ax)
                 self.draw_toolbar(graph)
-                try:
-                    print(graph.toolbar.canvas)
-                except:
-                    print("Application cannot this plot. The plot is empty")
-                    continue
+                if graph.toolbar.canvas is None:
+                    print("Application cannot draw this plot. The plot is empty")
             except:
                 graph.vertical_lay.removeWidget(graph.frame)
                 graph.vertical_lay.removeWidget(graph.toolbar)
                 graph.vertical_lay.update()
                 graphs.remove(graph)
                 continue
-        self.change_theme(graphs[0].theme)
         model.Graphs = graphs
 
-    def draw_toolbar(self,graph):
+    def draw_toolbar(self, graph):
         graph.toolbar = Navi(graph.canvas, graph.frame)
         graph.vertical_lay.addWidget(graph.toolbar)
 

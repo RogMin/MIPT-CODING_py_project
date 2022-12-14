@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 import main
 import draw
 
@@ -22,13 +20,18 @@ class Model:
     def save_graph(self, index):
         graph = self.Graphs[index]
         plt.style.use(graph.theme)
+        graph.frame = main.QtWidgets.QFrame()  # Create new frame
+        lay = main.QtWidgets.QStackedLayout(graph.frame)  # Set frame layout
+        lay.addWidget(graph.canvas)
+        graph.frame.setMinimumHeight(graph.canvas.get_width_height()[1])  # Set minimum height to graphic frame
+        graph.vertical_lay.addWidget(graph.frame)
         ax = graph.canvas.axes
         ax.cla()
-        graph.draw(ax)
-        legend = ax.legend()
-        legend.set_draggable(True)
         ax.set_xlabel(graph.x_lbl)
         ax.set_ylabel(graph.y_lbl)
+        legend = ax.legend()
+        legend.set_draggable(True)
+        graph.draw(ax)
 
     def set_line_type(self, typ):
         self.line_type = typ
@@ -69,9 +72,7 @@ class Model:
         """Dell old graphics"""
         for graph in self.Graphs:
             graph.vertical_lay.removeWidget(graph.frame)
-            del graph.frame
             graph.vertical_lay.update()
-        self.Graphs = []
 
     def init_graphs(self):
         """Create graphics prefabs"""
@@ -106,17 +107,16 @@ class Model:
 
 
 class Graph:
-    def __init__(self, marker_size=2, x_lbl="", y_lbl="", df=None, canvas=None,
-                 theme="bmh", verticalLay=None, frame=None):
-        self.marker_size = marker_size
-        self.x_lbl = x_lbl
-        self.y_lbl = y_lbl
-        self.canvas = canvas
-        self.df = df
-        self.theme = theme
-        self.vertical_lay = verticalLay
+    def __init__(self):
+        self.marker_size = 2
+        self.x_lbl = ""
+        self.y_lbl = ""
+        self.canvas = None
+        self.df = None
+        self.theme = "bmh"
+        self.vertical_lay = None
         self.marker_on_off = False
-        self.frame = frame
+        self.frame = None
         self.line_type = ''
         self.color = ""
 

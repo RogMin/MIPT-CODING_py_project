@@ -3,7 +3,6 @@ import matplotlib as plt
 import pandas as pd
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
-from matplotlib import style
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 import model
@@ -23,7 +22,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setAcceptDrops(True)
-        self.setWindowTitle("Easy Plot")
         width = 846
         height = 510
         self.setFixedSize(width, height)
@@ -54,7 +52,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.yellowLlineColorButton.clicked.connect(self.change_color_to_yellow)
         self.redLineColorButton.clicked.connect(self.change_color_to_red)
         self.saveButton.clicked.connect(self.save_graph)
-
+        self.setWindowTitle("Easy Plot")
     """Push and drop event"""
 
     def dragEnterEvent(self, e):
@@ -83,13 +81,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.csv_to_pd(pd.read_csv(name, encoding='utf-8').fillna(0))
         self.update_save_dropbox()
 
-
     """Change variables in model"""
 
     def update_save_dropbox(self):
         self.graphselDropdown.clear()
-        self.graphselDropdown.addItems(map(str,list(range(1, len(self.modl.Graphs)+1))))
-
+        self.graphselDropdown.addItems(map(str, list(range(1, len(self.modl.Graphs) + 1))))
 
     def save_graph(self):
         self.modl.save_graph(self.graphselDropdown.currentIndexChanged - 1)
@@ -138,7 +134,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def get_csv_file(self):
         """send dataframe to model"""
-        self.modl.csv_to_pd(pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
+        self.modl.csv_to_pd(
+            pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
         self.update_save_dropbox()
 
 

@@ -131,6 +131,7 @@ class HistHoriz(Graph):
                 self.df.plot.barh(ax=ax, linewidth=self.marker_size, style=self.line_type)
 
 
+"""Classes of different types of plot"""
 class HistHorizStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:

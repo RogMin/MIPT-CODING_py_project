@@ -12,7 +12,7 @@ plt.use('Qt5Agg')
 
 
 class MatplotlibCanvas(FigureCanvasQTAgg):
-    def __init__(self, dpi=112):
+    def __init__(self, parent=None, dpi=112):
         fig = Figure(dpi=dpi)
         self.axes = fig.add_subplot(111)
         super(MatplotlibCanvas, self).__init__(fig)
@@ -42,64 +42,58 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.toggleButton.clicked.connect(self.change_marker_bool)
         self.markerSizeSlider.sliderReleased.connect(self.set_marker_size)
         self.modl.set_vertical_lay(self.verticalLayout)
-        self.triangleMarkerTypeButton.clicked.connect(self.triangle_button)
-        self.circleMarkerTypeButton.clicked.connect(self.circle_button)
-        self.squareMarketTypeButton.clicked.connect(self.square_button)
+        self.triangleMarkerTypeButton.clicked.connect(self.triangle_button_event)
+        self.circleMarkerTypeButton.clicked.connect(self.circle_button_event)
+        self.squareMarketTypeButton.clicked.connect(self.square_button_event)
         self.grayLineColorButton.clicked.connect(self.change_color_to_gray)
         self.blueLineColorButton.clicked.connect(self.change_color_to_blue)
         self.whiteLineColorButton.clicked.connect(self.change_color_to_white)
         self.brownLineColorButton.clicked.connect(self.change_color_to_brown)
         self.yellowLlineColorButton.clicked.connect(self.change_color_to_yellow)
         self.redLineColorButton.clicked.connect(self.change_color_to_red)
-        self.ResetButton.clicked.connect(self.reset)
+        self.ResetButton.clicked.connect(self.update_button_event)
         self.setWindowTitle("Easy Plot")
 
-    """Push and drop event"""
+    """Default push and drop events:"""
+
     def dragEnterEvent(self, e):
-        """Sorting data process"""
         if e.mimeData().hasUrls:
             e.accept()
         else:
             e.ignore()
 
     def dragMoveEvent(self, e):
-        """Sorting data process"""
         if e.mimeData().hasUrls:
             e.accept()
         else:
             e.ignore()
 
     def dropEvent(self, e):
-        """Event of opening CSV-file"""
         if e.mimeData().hasUrls:
             e.setDropAction(QtCore.Qt.CopyAction)
             e.accept()
             for url in e.mimeData().urls():
                 fname = str(url.toLocalFile())
-            self.read_data(fname)
+            self.read_dropped_data(fname)
         else:
             e.ignore()
 
-    def read_data(self, name):
-        """Event of reading CSV-file"""
+    def read_dropped_data(self, name):
         self.modl.csv_to_pd(pd.read_csv(name, encoding='utf-8').fillna(0))
 
     """Change variables in model"""
-    def reset(self):
-        """Resets plot settings"""
-        self.modl.reset()
+    def update_button_event(self):
+        self.modl.update_button()
 
-    """Buttons of different markers"""
-    def triangle_button(self):
+    def triangle_button_event(self):
         self.modl.set_line_type('-')
 
-    def circle_button(self):
+    def circle_button_event(self):
         self.modl.set_line_type('bs-')
 
-    def square_button(self):
+    def square_button_event(self):
         self.modl.set_line_type('ro-')
 
-    """Buttons of different colors"""
     def change_color_to_gray(self):
         self.modl.change_color("GRAY")
 
@@ -118,7 +112,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def change_color_to_blue(self):
         self.modl.change_color("BLUE")
 
-    """Changing appearance"""
     def change_marker_bool(self):
         self.modl.change_marker_bool()
 
@@ -135,7 +128,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.set_y_label(self.y_label_inp.text())
 
     def get_csv_file(self):
-        """Sends dataframe to model"""
+        """send dataframe to model"""
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
 

@@ -53,7 +53,7 @@ class Model:
         self.y_label = label
         self.update_graphs_data()
 
-    def reset(self):
+    def update_button(self):
         self.csv_to_pd(self.df)
 
     def clear_graphs(self):

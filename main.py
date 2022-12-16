@@ -12,6 +12,7 @@ plt.use('Qt5Agg')
 
 
 class MatplotlibCanvas(FigureCanvasQTAgg):
+    """Canvas from matplotlib for drawing graphs on it"""
     def __init__(self, parent=None, dpi=112):
         fig = Figure(dpi=dpi)
         self.axes = fig.add_subplot(111)
@@ -19,12 +20,16 @@ class MatplotlibCanvas(FigureCanvasQTAgg):
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+    """Initializing PyQt5 interface objects from design.py"""
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
+        self.setWindowTitle("Easy Plot")
+        WIDTH = 846
+        HEIGHT = 510
+        self.setupUi(self)
+        self.setFixedSize(WIDTH, HEIGHT)
         self.setAcceptDrops(True)
-        width = 846
-        height = 510
-        self.setFixedSize(width, height)
+
         self.modl = model.Model()
         self.themes = self.themes = ['bmh', 'classic', 'dark_background', 'fast',
                                      'fivethirtyeight', 'ggplot', 'grayscale', 'seaborn-bright',
@@ -33,7 +38,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                                      'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
                                      'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'seaborn',
                                      'Solarize_Light2', 'tableau-colorblind10']
-        self.setupUi(self)
+
         self.openCSVButton.clicked.connect(self.get_csv_file)
         self.stylesDropdown.addItems(self.themes)
         self.stylesDropdown.currentIndexChanged['QString'].connect(self.set_theme)
@@ -52,23 +57,23 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.yellowLlineColorButton.clicked.connect(self.change_color_to_yellow)
         self.redLineColorButton.clicked.connect(self.change_color_to_red)
         self.ResetButton.clicked.connect(self.update_button_event)
-        self.setWindowTitle("Easy Plot")
-
-    """Default push and drop events:"""
 
     def dragEnterEvent(self, e):
+        """Default PyQT5 drag event:"""
         if e.mimeData().hasUrls:
             e.accept()
         else:
             e.ignore()
 
     def dragMoveEvent(self, e):
+        """Default PyQT5 drag event:"""
         if e.mimeData().hasUrls:
             e.accept()
         else:
             e.ignore()
 
     def dropEvent(self, e):
+        """Default PyQT5 drop event:"""
         if e.mimeData().hasUrls:
             e.setDropAction(QtCore.Qt.CopyAction)
             e.accept()
@@ -79,9 +84,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             e.ignore()
 
     def read_dropped_data(self, name):
+        """Read data from dropped file:
+
+        :name: file path
+        """
         self.modl.csv_to_pd(pd.read_csv(name, encoding='utf-8').fillna(0))
 
     """Change variables in model"""
+
     def update_button_event(self):
         self.modl.update_button()
 
@@ -128,7 +138,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.modl.set_y_label(self.y_label_inp.text())
 
     def get_csv_file(self):
-        """send dataframe to model"""
+        """Send dataframe to model"""
         self.modl.csv_to_pd(
             pd.read_csv(QFileDialog.getOpenFileName(filter="csv (*.csv)")[0], encoding='utf-8').fillna(0))
 

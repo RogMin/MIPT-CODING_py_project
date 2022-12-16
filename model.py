@@ -4,16 +4,16 @@ import draw
 
 class Model:
     def __init__(self):
-        self.old_graphs = None
-        self.Graphs = []
+        self.draw = draw.Draw()
         self.marker_sz = 2
         self.theme = "bmh"
+        self.Graphs = []
         self.color = ''
         self.x_label = ""
         self.y_label = ""
         self.line_type = ''
         self.df = None
-        self.draw = draw.Draw()
+        self.old_graphs = None
         self.vertical_lay = None
         self.marker_on_off = False
 
@@ -95,6 +95,9 @@ class Model:
         self.draw.visualise(self.Graphs, self)
 
 
+"""Classes of different types of plot:"""
+
+
 class Graph:
     def __init__(self):
         self.marker_size = 2
@@ -131,7 +134,6 @@ class HistHoriz(Graph):
                 self.df.plot.barh(ax=ax, linewidth=self.marker_size, style=self.line_type)
 
 
-"""Classes of different types of plot"""
 class HistHorizStacked(Graph):
     def draw(self, ax):
         if self.marker_on_off:

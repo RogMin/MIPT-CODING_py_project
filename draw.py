@@ -7,7 +7,11 @@ plt.use('Qt5Agg')
 
 
 class Draw:
+    """Draws graphs from model
 
+        :graphs: a graph from an array of graphs from model(not changed)
+        :model: link to model
+    """
     def visualise(self, graphs, model):
         self.change_theme(graphs[0].theme)
         for graph in graphs:
@@ -36,8 +40,17 @@ class Draw:
         model.Graphs = graphs
 
     def draw_toolbar(self, graph):
+        """Draws nav2tools from matplotlib
+
+        :graph: a graph from an array of graphs from model
+        """
         graph.toolbar = Navi(graph.canvas, graph.frame)
         graph.vertical_lay.addWidget(graph.toolbar)
 
+
     def change_theme(self, theme):
+        """Sets the theme in matplotlib
+
+        :theme: matplotlib theme as a string
+        """
         plt.style.use(theme)
